@@ -86,6 +86,7 @@ goog.exportSymbol('proto.walletrpc.NextAddressRequest', null, global);
 goog.exportSymbol('proto.walletrpc.NextAddressRequest.GapPolicy', null, global);
 goog.exportSymbol('proto.walletrpc.NextAddressRequest.Kind', null, global);
 goog.exportSymbol('proto.walletrpc.NextAddressResponse', null, global);
+goog.exportSymbol('proto.walletrpc.NextAddressResponse.AccountType', null, global);
 goog.exportSymbol('proto.walletrpc.OpenWalletRequest', null, global);
 goog.exportSymbol('proto.walletrpc.OpenWalletResponse', null, global);
 goog.exportSymbol('proto.walletrpc.PingRequest', null, global);
@@ -3932,7 +3933,8 @@ proto.walletrpc.NextAccountRequest.prototype.toObject = function(opt_includeInst
 proto.walletrpc.NextAccountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     passphrase: msg.getPassphrase_asB64(),
-    accountName: jspb.Message.getFieldWithDefault(msg, 2, "")
+    accountName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    accountType: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3977,6 +3979,10 @@ proto.walletrpc.NextAccountRequest.deserializeBinaryFromReader = function(msg, r
       var value = /** @type {string} */ (reader.readString());
       msg.setAccountName(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAccountType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4017,6 +4023,13 @@ proto.walletrpc.NextAccountRequest.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getAccountType();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
       f
     );
   }
@@ -4074,6 +4087,21 @@ proto.walletrpc.NextAccountRequest.prototype.getAccountName = function() {
 /** @param {string} value */
 proto.walletrpc.NextAccountRequest.prototype.setAccountName = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 account_type = 3;
+ * @return {number}
+ */
+proto.walletrpc.NextAccountRequest.prototype.getAccountType = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.walletrpc.NextAccountRequest.prototype.setAccountType = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -4375,7 +4403,8 @@ proto.walletrpc.NextAddressRequest.serializeBinaryToWriter = function(message, w
  */
 proto.walletrpc.NextAddressRequest.Kind = {
   BIP0044_EXTERNAL: 0,
-  BIP0044_INTERNAL: 1
+  BIP0044_INTERNAL: 1,
+  BLISS: 2
 };
 
 /**
@@ -4481,7 +4510,8 @@ proto.walletrpc.NextAddressResponse.prototype.toObject = function(opt_includeIns
 proto.walletrpc.NextAddressResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    publicKey: jspb.Message.getFieldWithDefault(msg, 2, "")
+    publicKey: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    accountType: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -4526,6 +4556,10 @@ proto.walletrpc.NextAddressResponse.deserializeBinaryFromReader = function(msg, 
       var value = /** @type {string} */ (reader.readString());
       msg.setPublicKey(value);
       break;
+    case 3:
+      var value = /** @type {!proto.walletrpc.NextAddressResponse.AccountType} */ (reader.readEnum());
+      msg.setAccountType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4569,8 +4603,23 @@ proto.walletrpc.NextAddressResponse.serializeBinaryToWriter = function(message, 
       f
     );
   }
+  f = message.getAccountType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.walletrpc.NextAddressResponse.AccountType = {
+  BIP0044: 0,
+  BLISS: 1
+};
 
 /**
  * optional string address = 1;
@@ -4599,6 +4648,21 @@ proto.walletrpc.NextAddressResponse.prototype.getPublicKey = function() {
 /** @param {string} value */
 proto.walletrpc.NextAddressResponse.prototype.setPublicKey = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional AccountType account_type = 3;
+ * @return {!proto.walletrpc.NextAddressResponse.AccountType}
+ */
+proto.walletrpc.NextAddressResponse.prototype.getAccountType = function() {
+  return /** @type {!proto.walletrpc.NextAddressResponse.AccountType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {!proto.walletrpc.NextAddressResponse.AccountType} value */
+proto.walletrpc.NextAddressResponse.prototype.setAccountType = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 

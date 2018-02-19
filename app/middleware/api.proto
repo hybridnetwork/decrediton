@@ -188,6 +188,7 @@ message RescanResponse {
 message NextAccountRequest {
 	bytes passphrase = 1;
 	string account_name = 2;
+    uint32 account_type = 3;
 }
 message NextAccountResponse {
 	uint32 account_number = 1;
@@ -198,6 +199,7 @@ message NextAddressRequest {
 	enum Kind {
 	     BIP0044_EXTERNAL = 0;
 	     BIP0044_INTERNAL = 1;
+         BLISS = 2;
 	}
 	Kind kind = 2;
 	enum GapPolicy {
@@ -211,6 +213,11 @@ message NextAddressRequest {
 message NextAddressResponse {
 	string address = 1;
 	string public_key = 2;
+    enum AccountType {
+        BIP0044 = 0;
+        BLISS = 1;
+    }
+    AccountType account_type = 3;
 }
 
 message ImportPrivateKeyRequest {
