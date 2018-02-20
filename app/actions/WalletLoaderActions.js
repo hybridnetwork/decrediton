@@ -85,15 +85,17 @@ export const createWalletRequest = (pubPass, privPass, seed, existing) =>
       .catch(error => dispatch({ error, type: CREATEWALLET_FAILED }));
   };
 
-export const OPENWALLET_INPUT = "OPENWALLET_INPUT";
-export const OPENWALLET_FAILED_INPUT = "OPENWALLET_FAILED_INPUT";
+export const OPENWALLET_PUBLIC_INPUT = "OPENWALLET_PUBLIC_INPUT";
+export const OPENWALLET_FAILED_PUBLIC_INPUT = "OPENWALLET_FAILED_PUBLIC_INPUT";
+export const OPENWALLET_PRIVATE_INPUT = "OPENWALLET_PRIVATE_INPUT";
+export const OPENWALLET_FAILED_PRIVATE_INPUT = "OPENWALLET_FAILED_PRIVATE_INPUT";
 export const OPENWALLET_ATTEMPT = "OPENWALLET_ATTEMPT";
 export const OPENWALLET_FAILED = "OPENWALLET_FAILED";
 export const OPENWALLET_SUCCESS = "OPENWALLET_SUCCESS";
 
-export const openWalletAttempt = (pubPass, retryAttempt) => (dispatch, getState) => {
+export const openWalletAttempt = (pubPass, privPass, retryAttempt) => (dispatch, getState) => {
   dispatch({ type: OPENWALLET_ATTEMPT });
-  return openWallet(getState().walletLoader.loader, pubPass)
+  return openWallet(getState().walletLoader.loader, "public", privPass)
     .then(() => {
       dispatch({ type: OPENWALLET_SUCCESS });
       dispatch(prepStartDaemon());
@@ -102,11 +104,17 @@ export const openWalletAttempt = (pubPass, retryAttempt) => (dispatch, getState)
       if (error.message.includes("wallet already loaded")) {
         dispatch({response: {}, type: OPENWALLET_SUCCESS});
         dispatch(prepStartDaemon());
+      } else if (error.message.includes("invalid passphrase") && error.message.includes("private key")) {
+        if (retryAttempt) {
+          dispatch({ error, type: OPENWALLET_FAILED_PRIVATE_INPUT });
+        } else {
+          dispatch({ type: OPENWALLET_PRIVATE_INPUT });
+        }
       } else if (error.message.includes("invalid passphrase") && error.message.includes("public key")) {
         if (retryAttempt) {
-          dispatch({ error, type: OPENWALLET_FAILED_INPUT });
+          dispatch({ error, type: OPENWALLET_FAILED_PUBLIC_INPUT });
         } else {
-          dispatch({ type: OPENWALLET_INPUT });
+          dispatch({ type: OPENWALLET_PUBLIC_INPUT });
         }
       } else {
         dispatch({ error, type: OPENWALLET_FAILED });
