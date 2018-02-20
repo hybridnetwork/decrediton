@@ -8,6 +8,8 @@ import * as da from "../actions/DaemonActions";
 const mapStateToProps = selectorMap({
   startStepIndex: sel.startStepIndex,
   isInputRequest: sel.isInputRequest,
+  isOpenWalletPublicInputRequest: sel.isOpenWalletPublicInputRequest,
+  isOpenWalletPrivateInputRequest: sel.isOpenWalletPrivateInputRequest,
   startupError: sel.startupError,
   confirmNewSeed: sel.confirmNewSeed,
   hasExistingWallet: sel.hasExistingWallet,

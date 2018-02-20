@@ -86,7 +86,6 @@ export const availableWalletsSelect = createSelector(
 export const previousWallet = get(["daemon", "previousWallet"]);
 export const getWalletName = get(["daemon", "walletName"]);
 
-const openWalletInputRequest = get(["walletLoader", "openWalletInputRequest"]);
 const createWalletInputRequest = get(["walletLoader", "createWalletInputRequest"]);
 const discoverAddressInputRequest = get(["walletLoader", "discoverAddressInputRequest"]);
 const advancedDaemonInputRequest = get(["walletLoader", "advancedDaemonInputRequest"]);
@@ -94,12 +93,14 @@ const openWalletRequestAttempt = get(["walletLoader", "walletOpenRequestAttempt"
 const selectCreateWalletInputRequest = get(["daemon", "selectCreateWalletInputRequest"]);
 
 export const isInputRequest = or(
-  and(openWalletInputRequest, not(openWalletRequestAttempt)),
   createWalletInputRequest,
   discoverAddressInputRequest,
   and(openForm, isAdvancedDaemon, advancedDaemonInputRequest),
   selectCreateWalletInputRequest
 );
+
+export const isOpenWalletPublicInputRequest = get(["walletLoader", "openWalletPublicInputRequest"]);
+export const isOpenWalletPrivateInputRequest = get(["walletLoader", "openWalletPrivateInputRequest"]);
 
 export const balances = or(get(["grpc", "balances"]), () => []);
 export const walletService = get(["grpc", "walletService"]);
