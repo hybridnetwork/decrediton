@@ -46,16 +46,18 @@ class OpenWalletBody extends React.Component {
   getInitialState() {
     return {
       publicPassPhrase: "",
+      privatePassPhrase: "",
       hasAttemptedOpen: false
     };
   }
 
   render() {
-    const { publicPassPhrase, hasAttemptedOpen, onKeyDown } = this.state;
+    const { publicPassPhrase, privatePassPhrase, hasAttemptedOpen, onKeyDown } = this.state;
     const { hasExistingWallet } = this.props;
     const {
       onSetPublicPassPhrase,
-      onOpenWallet
+      onSetPrivatePassPhrase,
+      onOpenWallet,
     } = this;
 
     return hasExistingWallet ? (
@@ -63,8 +65,10 @@ class OpenWalletBody extends React.Component {
         {...{
           ...this.props,
           publicPassPhrase,
+          privatePassPhrase,
           hasAttemptedOpen,
           onSetPublicPassPhrase,
+          onSetPrivatePassPhrase,
           onOpenWallet,
           onKeyDown
         }}
@@ -86,12 +90,17 @@ class OpenWalletBody extends React.Component {
     this.setState({ publicPassPhrase });
   }
 
-  onOpenWallet() {
-    if (!this.state.publicPassPhrase) {
-      return this.setState({ hasAttemptedOpen: true });
-    }
+  onSetPrivatePassPhrase(privatePassPhrase) {
+    this.setState({ privatePassPhrase });
+  }
 
-    this.props.onOpenWallet(this.state.publicPassPhrase, true);
+  onOpenWallet() {
+    /// TODO: determine if this can be removed or needs to stay?
+    // if (!this.state.publicPassPhrase) {
+    //   return this.setState({ hasAttemptedOpen: true });
+    // }
+
+    this.props.onOpenWallet(this.state.publicPassPhrase, this.state.privatePassPhrase, true);
     this.resetState();
   }
 

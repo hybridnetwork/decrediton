@@ -2,7 +2,9 @@ import {
   CREATEWALLET_ATTEMPT, CREATEWALLET_FAILED, CREATEWALLET_SUCCESS,
   LOADER_ATTEMPT, LOADER_FAILED, LOADER_SUCCESS,
   WALLETEXIST_ATTEMPT, WALLETEXIST_FAILED, WALLETEXIST_SUCCESS,
-  OPENWALLET_INPUT, OPENWALLET_FAILED_INPUT, OPENWALLET_ATTEMPT, OPENWALLET_FAILED, OPENWALLET_SUCCESS,
+  OPENWALLET_PUBLIC_INPUT, OPENWALLET_FAILED_PUBLIC_INPUT,
+  OPENWALLET_PRIVATE_INPUT, OPENWALLET_FAILED_PRIVATE_INPUT,
+  OPENWALLET_ATTEMPT, OPENWALLET_FAILED, OPENWALLET_SUCCESS,
   CLOSEWALLET_ATTEMPT, CLOSEWALLET_FAILED, CLOSEWALLET_SUCCESS,
   STARTRPC_ATTEMPT, STARTRPC_FAILED, STARTRPC_SUCCESS, STARTRPC_RETRY,
   DISCOVERADDRESS_INPUT, DISCOVERADDRESS_FAILED_INPUT, DISCOVERADDRESS_ATTEMPT, DISCOVERADDRESS_FAILED, DISCOVERADDRESS_SUCCESS,
@@ -95,19 +97,29 @@ export default function walletLoader(state = {}, action) {
       advancedDaemonInputRequest: true,
       stepIndex: 3,
     };
-  case OPENWALLET_INPUT:
+  case OPENWALLET_PUBLIC_INPUT:
     return {...state,
-      openWalletInputRequest: true,
+      openWalletPublicInputRequest: true,
     };
-  case OPENWALLET_FAILED_INPUT:
+  case OPENWALLET_FAILED_PUBLIC_INPUT:
     return {...state,
       walletOpenError: String(action.error),
-      openWalletInputRequest: true,
+      openWalletPublicInputRequest: true,
+    };
+  case OPENWALLET_PRIVATE_INPUT:
+    return {...state,
+      openWalletPrivateInputRequest: true,
+    };
+  case OPENWALLET_FAILED_PRIVATE_INPUT:
+    return {...state,
+      walletOpenError: String(action.error),
+      openWalletPrivateInputRequest: true,
     };
   case OPENWALLET_ATTEMPT:
     return {...state,
       walletOpenError: false,
-      openWalletInputRequest: false,
+      openWalletPublicInputRequest: false,
+      openWalletPrivateInputRequest: false,
       walletOpenRequestAttempt: true,
     };
   case OPENWALLET_FAILED:

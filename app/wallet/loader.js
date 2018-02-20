@@ -33,11 +33,13 @@ export const createWallet = log((loader, pubPass, privPass, seed) =>
     loader.createWallet(request, error => error ? reject(error) : resolve());
   }), "Create Wallet", logOptionNoArgs());
 
-export const openWallet = log((loader, pubPass) =>
+export const openWallet = log((loader, pubPass, privPass) =>
   new Promise((resolve, reject) => {
     const request = new OpenWalletRequest();
     request.setPublicPassphrase(new Uint8Array(Buffer.from(pubPass)));
-    request.setPrivatePassphrase(new Uint8Array(Buffer.from("testnet123")));
+    if (privPass && privPass.length > 0) {
+      request.setPrivatePassphrase(new Uint8Array(Buffer.from(privPass)));
+    }
     loader.openWallet(request, error => error ? reject(error) : resolve());
   }), "Open Wallet", logOptionNoArgs());
 
