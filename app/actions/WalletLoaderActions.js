@@ -104,6 +104,9 @@ export const openWalletAttempt = (pubPass, privPass, retryAttempt) => (dispatch,
       if (error.message.includes("wallet already loaded")) {
         dispatch({response: {}, type: OPENWALLET_SUCCESS});
         dispatch(prepStartDaemon());
+
+        dispatch({ type: 'DISCOVERADDRESS_INPUT' });
+
       } else if (error.message.includes("invalid passphrase") && error.message.includes("private key")) {
         if (retryAttempt) {
           dispatch({ error, type: OPENWALLET_FAILED_PRIVATE_INPUT });

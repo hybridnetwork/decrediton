@@ -133,7 +133,9 @@ export const startWallet = (selectedWallet) => (dispatch) => {
       dispatch({type: WALLET_AUTOBUYER_SETTINGS, balanceToMaintain, maxFee, maxPriceAbsolute, maxPriceRelative, maxPerBlock});
       dispatch({type: WALLET_SETTINGS, currencyDisplay});
       dispatch({type: WALLET_STAKEPOOL_SETTINGS, activeStakePoolConfig, selectedStakePool, currentStakePoolConfig});
-      dispatch({type: WALLET_LOADER_SETTINGS, discoverAccountsComplete});
+      //// ignore discoverAccountsComplete local wallet settings saved value
+      //// so it is always called 
+      // dispatch({type: WALLET_LOADER_SETTINGS, discoverAccountsComplete});
       setTimeout(()=>dispatch(versionCheckAction()), 2000);
       setTimeout(()=>dispatch(determineNeededBlocks()), 2000);
     })
