@@ -18,10 +18,15 @@ export const GETNEXTADDRESS_ATTEMPT = "GETNEXTADDRESS_ATTEMPT";
 export const GETNEXTADDRESS_FAILED = "GETNEXTADDRESS_FAILED";
 export const GETNEXTADDRESS_SUCCESS = "GETNEXTADDRESS_SUCCESS";
 
-export function getNextAddressAttempt(accountNum) {
+const ACCOUNT_TYPE__BLISS = 1;
+
+const ADDR_KIND__REG = 0;
+const ADDR_KIND__BLISS = 2;
+
+export function getNextAddressAttempt(accountNum, accountType) {
   var request = new NextAddressRequest();
   request.setAccount(accountNum);
-  request.setKind(0);
+  request.setKind(accountType === ACCOUNT_TYPE__BLISS ? ADDR_KIND__BLISS: ADDR_KIND__REG);
   request.setGapPolicy(NextAddressRequest.GapPolicy.GAP_POLICY_WRAP);
   return (dispatch, getState) => {
     dispatch({ type: GETNEXTADDRESS_ATTEMPT });

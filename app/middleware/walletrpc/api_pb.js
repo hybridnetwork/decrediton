@@ -3006,7 +3006,8 @@ proto.walletrpc.AccountsResponse.Account.toObject = function(includeInstance, ms
     totalBalance: jspb.Message.getFieldWithDefault(msg, 3, 0),
     externalKeyCount: jspb.Message.getFieldWithDefault(msg, 4, 0),
     internalKeyCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    importedKeyCount: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    importedKeyCount: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    accountType: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -3066,6 +3067,10 @@ proto.walletrpc.AccountsResponse.Account.deserializeBinaryFromReader = function(
     case 6:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setImportedKeyCount(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAccountType(value);
       break;
     default:
       reader.skipField();
@@ -3135,6 +3140,13 @@ proto.walletrpc.AccountsResponse.Account.serializeBinaryToWriter = function(mess
   if (f !== 0) {
     writer.writeUint32(
       6,
+      f
+    );
+  }
+  f = message.getAccountType();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
       f
     );
   }
@@ -3228,6 +3240,21 @@ proto.walletrpc.AccountsResponse.Account.prototype.getImportedKeyCount = functio
 /** @param {number} value */
 proto.walletrpc.AccountsResponse.Account.prototype.setImportedKeyCount = function(value) {
   jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 account_type = 7;
+ * @return {number}
+ */
+proto.walletrpc.AccountsResponse.Account.prototype.getAccountType = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.walletrpc.AccountsResponse.Account.prototype.setAccountType = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 

@@ -34,6 +34,7 @@ const updateSavedConfig = (newPoolInfo, poolHost, apiKey, accountNum) =>
     });
   };
 
+/// TODO buckbeak
 const setStakePoolAddressAction = (privpass, poolHost, apiKey, accountNum) =>
   (dispatch, getState) => {
     const walletService = sel.walletService(getState());

@@ -166,6 +166,7 @@ message AccountsResponse {
 		uint32 external_key_count = 4;
 		uint32 internal_key_count = 5;
 		uint32 imported_key_count = 6;
+    uint32 account_type = 7;
 	}
 	repeated Account accounts = 1;
 	bytes current_block_hash = 2;
