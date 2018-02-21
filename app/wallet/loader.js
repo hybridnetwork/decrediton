@@ -50,11 +50,10 @@ export const closeWallet = log((loader) =>
 
 export const discoverAddresses = log((loader, shouldDiscoverAccounts, privPass) =>
   new Promise((resolve, reject) => {
-      shouldDiscoverAccounts = true; /// BUCKBEAK - change
     const request = new DiscoverAddressesRequest();
     request.setDiscoverAccounts(shouldDiscoverAccounts);
     if (shouldDiscoverAccounts) {
-      request.setPrivatePassphrase(new Uint8Array(Buffer.from("testnet123"))); /// BUCKBEAK - change
+      request.setPrivatePassphrase(new Uint8Array(Buffer.from(privPass)));
     }
     loader.discoverAddresses(request, error => error ? reject(error) : resolve());
   }), "Discover Addresses", logOptionNoArgs());
