@@ -6,9 +6,11 @@
   align-items: center;
   border-bottom: 1px @stroke-color-default solid;
   font-family: @font-family-regular;
-  font-size: 13px;
-  color: @input-color-default;
-  padding: 3px 4px 1px 10px;
+  font-size: 16px;
+  color: #000;
+  border-radius: 5px;
+  background: #fff;
+  padding: 3px 4px 3px 10px;
 }
 
 .input-and-unit.numeric-input {
@@ -17,12 +19,12 @@
 
 .input-and-unit:hover:not(.disabled):not(.active) {
   color: @input-color-hovered;
-  border-bottom: 1px @stroke-color-hovered solid;
+  border: 1px @purple solid;
 }
 
 .input-and-unit.active:not(.disabled) {
   color: @input-color-focused;
-  border-bottom: 1px @stroke-color-focused solid;
+  border: 1px @purple solid;
   outline: none;
 }
 
@@ -30,7 +32,7 @@
 .inverted-colors .input-and-unit:hover:not(.disabled):not(.active),
 .inverted-colors .input-and-unit.active:not(.disabled),
 .inverted-colors .input {
-  color: @white;
+  // color: @white;
 }
 
 .input-and-unit.disabled {
