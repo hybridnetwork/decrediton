@@ -11,9 +11,10 @@ const linkList = [
   "accounts",
   "transactions",
   "tickets",
-  "security",
-  "settings",
-  "help"
+  //// hide for now
+  // "security",
+  // "settings",
+  // "help"
 ];
 
 @autobind
