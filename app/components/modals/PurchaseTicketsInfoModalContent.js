@@ -33,7 +33,7 @@ export default () => (
       </span>
       <span className="info-modal-row">
         <span className="info-modal-row-label highlight-blue"><T id="tickets.info.votingAddress.header" m="Voting address" /></span>
-        <span className="info-modal-row-text"><T id="tickets.info.votingAddress.message" m="The Decred address that will do the voting." /></span>
+        <span className="info-modal-row-text"><T id="tickets.info.votingAddress.message" m="The Hx address that will do the voting." /></span>
       </span>
       <span className="info-modal-row">
         <span className="info-modal-row-label highlight-blue"><T id="tickets.info.poolFeeAddress.header" m="Pool fee address" /></span>

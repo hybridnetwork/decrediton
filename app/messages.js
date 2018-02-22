@@ -12,8 +12,8 @@ export default defineMessages({
   "transaction.description":                  { id: "transaction.description",               defaultMessage: "Date and time will appear as soon as we get a confirmation." },
 
   "transactions.title":                       { id: "transactions.title",                    defaultMessage: "Transactions" },
-  "transactions.description.send.testnet":    { id: "transactions.description.send.testnet", defaultMessage: "Testnet Decred addresses always begin with letter T and contain 26-35 alphanumeric characters\n(e.g. TxxXXXXXxXXXxXXXXxxx0XxXXXxxXxXxX0)." },
-  "transactions.description.send.mainnet":    { id: "transactions.description.send.mainnet", defaultMessage: "Mainnet Decred addresses always begin with letter D and contain 26-35 alphanumeric characters\n(e.g. DxxXXXXXxXXXxXXXXxxx0XxXXXxxXxXxX0X)." },
+  "transactions.description.send.testnet":    { id: "transactions.description.send.testnet", defaultMessage: "Testnet Hx addresses always begin with letter T and contain 26-35 alphanumeric characters\n(e.g. TxxXXXXXxXXXxXXXXxxx0XxXXXxxXxXxX0)." },
+  "transactions.description.send.mainnet":    { id: "transactions.description.send.mainnet", defaultMessage: "Mainnet Hx addresses always begin with letter D and contain 26-35 alphanumeric characters\n(e.g. DxxXXXXXxXXXxXXXXxxx0XxXXXxxXxXxX0X)." },
   "transactions.description.receive":         { id: "transactions.description.receive",      defaultMessage: "Each time you request a payment, create a new address to protect your privacy." },
   "transactions.description.history":         { id: "transactions.description.history",      defaultMessage: "Total Balance:" },
   "transactions.tab.send":                    { id: "transactions.tab.send",                 defaultMessage: "Send" },
