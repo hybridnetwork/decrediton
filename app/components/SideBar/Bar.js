@@ -42,8 +42,9 @@ const Bar = ({
       <div className="sidebar-menu-bottom">
         <div
           className="sidebar-menu-bottom-total-balance-short"
-          onMouseEnter={rescanRequest ? null : onShowAccounts}
-          onMouseLeave={rescanRequest ? null : onHideAccounts}
+          ///// disable hover state showing account info
+          // onMouseEnter={rescanRequest ? null : onShowAccounts}
+          // onMouseLeave={rescanRequest ? null : onHideAccounts}
         >
           <div className="sidebar-menu-bottom-total-balance-short-separator"></div>
           <div className="sidebar-menu-bottom-total-balance-short-name"><T id="sidebar.totalBalance" m="Total Balance"/>:</div>
