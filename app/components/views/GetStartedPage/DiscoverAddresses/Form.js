@@ -35,11 +35,11 @@ const DiscoverAddressesFormBodyBase = ({
     <div className="get-started-content-new-seed page-content">
       <div className="get-started-content-instructions">
         <T id="getStarted.discoverAccountsInfo" m={`
-          Please enter the passphrase you just created to generate the post quantum account (if first run) and to scan the blockchain for additional accounts you may have previously created with your wallet.
+          Please enter the passphrase you just created to generate the post quantum account and to scan the blockchain for additional accounts you may have previously created with your wallet.
         `}/>
       </div>
       <div className="get-started-content-new-seed-create-button">
-        <div className="get-started-content-confirm-wallet-create-input-left-padding">Scan for accounts:</div>
+        <div className="get-started-content-confirm-wallet-create-input-left-padding">Enter Wallet Passphrase:</div>
         <div className="get-started-content-confirm-wallet-create-input-right-padding">
           <div className="get-started-input-form">
             <form className="get-started-input-form">
@@ -65,7 +65,7 @@ const DiscoverAddressesFormBodyBase = ({
               className="get-started-view-button-key-blue-wallet-new-seed"
               onClick={onDiscoverAddresses}
             >
-              <T id="getStarted.discoverAddresses.scanBtn" m="Scan" />
+              <T id="getStarted.discoverAddresses.scanBtn" m="Generate" />
             </KeyBlueButton>
           </div>
         </div>

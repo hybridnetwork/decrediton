@@ -75,11 +75,11 @@ export const createWalletRequest = (pubPass, privPass, seed, existing) =>
       .then(() => {
         const { daemon: { walletName }} = getState();
         const config = getWalletCfg(isTestNet(getState()), walletName);
-        config.delete("discoveraccounts");
+        // config.delete("discoveraccounts");
         dispatch({response: {}, type: CREATEWALLET_SUCCESS });
         dispatch(clearStakePoolConfigNewWallet());
         dispatch({complete: !existing, type: UPDATEDISCOVERACCOUNTS});
-        config.set("discoveraccounts", !existing);
+        // config.set("discoveraccounts", !existing);
         dispatch(prepStartDaemon());
       })
       .catch(error => dispatch({ error, type: CREATEWALLET_FAILED }));
@@ -206,16 +206,17 @@ export const discoverAddressAttempt = (privPass) => (dispatch, getState) => {
   const { walletLoader: {loader, discoverAccountsComplete }} = getState();
   const { daemon: { walletName }} = getState();
   dispatch({ type: DISCOVERADDRESS_ATTEMPT });
-  discoverAddresses(loader, !discoverAccountsComplete, privPass)
+  dispatch({ type: 'DISCOVERADDRESS_INPUT' });
+  discoverAddresses(loader, true, privPass)
     .then(() => {
       const { subscribeBlockNtfnsResponse } = getState().walletLoader;
 
-      if (!discoverAccountsComplete) {
-        const config = getWalletCfg(isTestNet(getState()), walletName);
-        config.delete("discoveraccounts");
-        config.set("discoveraccounts", true);
-        dispatch({complete: true, type: UPDATEDISCOVERACCOUNTS});
-      }
+      // if (!discoverAccountsComplete) {
+      //   const config = getWalletCfg(isTestNet(getState()), walletName);
+      //   config.delete("discoveraccounts");
+      //   config.set("discoveraccounts", true);
+      //   dispatch({complete: true, type: UPDATEDISCOVERACCOUNTS});
+      // }
 
       dispatch({response: {}, type: DISCOVERADDRESS_SUCCESS});
       if (subscribeBlockNtfnsResponse !== null) dispatch(fetchHeadersAttempt());
@@ -240,12 +241,12 @@ const subscribeBlockAttempt = () => (dispatch, getState) => {
   return subscribeToBlockNotifications(loader)
     .then(() => {
       dispatch({response: {}, type: SUBSCRIBEBLOCKNTFNS_SUCCESS});
-      if (discoverAccountsComplete) {
-        dispatch(discoverAddressAttempt());
-      } else {
+      // if (discoverAccountsComplete) {
+      //   dispatch(discoverAddressAttempt());
+      // } else {
         // This is dispatched to indicate we should wait for user input to discover addresses.
         dispatch({response: {}, type: DISCOVERADDRESS_INPUT});
-      }
+      // }
     })
     .catch(error => dispatch({ error, type: SUBSCRIBEBLOCKNTFNS_FAILED }));
 };
