@@ -19,13 +19,13 @@ const AccountsList = ({
 }) => (
   <Aux>
     <TabbedHeader {...{ routes }}>
-      <PassphraseModalButton
+      {/* <PassphraseModalButton
         modalTitle={<T id="accounts.newAccountConfirmations" m="Create new account" />}
         modalComponent={AddAccountModal}
         className="content-send"
         onSubmit={onGetNextAccountAttempt}
         buttonLabel={<T id="accounts.addNewButton" m="Add New" />}
-      />
+      /> */}
     </TabbedHeader>
     <div className="tabbed-page">
       <div className="tab-content">
