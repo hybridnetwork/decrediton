@@ -13,7 +13,7 @@ class WalletSelectionBody extends React.Component {
   getInitialState() {
     return {
       newWalletName: "",
-      newWalletNetwork: "mainnet",
+      newWalletNetwork: "testnet",
       sideActive: false,
       selectedWallet: this.props.availableWallets ? this.props.availableWallets[0] : null
     };
