@@ -293,7 +293,7 @@ export const NEEDED_BLOCKS_DETERMINED = "NEEDED_BLOCKS_DETERMINED";
 export function determineNeededBlocks() {
   return (dispatch, getState) => {
     const network = getState().daemon.network;
-    const explorerInfoURL = `http://ec2-52-70-30-246.compute-1.amazonaws.com:3006/api/status`;
+    const explorerInfoURL = `http://explorer1.hybrid.network/api/status`;
     axios.get(explorerInfoURL, {timeout: 5000})
       .then(function (response) {
         const neededBlocks = response.data.info.blocks;
