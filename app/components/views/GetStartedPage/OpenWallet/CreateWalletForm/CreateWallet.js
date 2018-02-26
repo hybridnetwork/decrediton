@@ -45,7 +45,7 @@ const CreateWallet = ({
       </div>
       <div className="seed">
         <UnselectableText>{mnemonic}</UnselectableText>
-        <a className="copy-to-clipboard-icon" onClick={handleCopySeed}></a>
+        {/* <a className="copy-to-clipboard-icon" onClick={handleCopySeed}></a> */}
       </div>
       <KeyBlueButton className="wallet-key-blue-button" onClick={createWalletConfirmNewSeed}>
         <T id="createWallet.continueBtn" m="Continue" />
