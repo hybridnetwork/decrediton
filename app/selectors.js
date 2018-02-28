@@ -162,14 +162,14 @@ const getTxTypeStr = type => (TRANSACTION_TYPES)[type];
 export const txURLBuilder= createSelector(
   [network],
   (network) =>
-    (txHash) => `http://ec2-52-70-30-246.compute-1.amazonaws.com:3006/api/tx/${txHash}`
+    (txHash) => `http://explorer1.hybrid.network/tx/${txHash}`
     // (txHash) => `https://${network !== "testnet" ? "explorer" : network}.dcrdata.org/${network == "testnet" ? "explorer/" : ""}tx/${txHash}`
 );
 
 export const blockURLBuilder= createSelector(
   [network],
   (network) =>
-    (txHash) => `http://ec2-52-70-30-246.compute-1.amazonaws.com:3006/api/block/${txHash}`
+    (txHash) => `http://explorer1.hybrid.network/block/${txHash}`
     // (txHash) => `https://${network !== "testnet" ? "explorer" : network}.dcrdata.org/${network == "testnet" ? "explorer/" : ""}block/${txHash}`
 );
 
