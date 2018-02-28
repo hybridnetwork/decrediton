@@ -65,7 +65,7 @@ const DiscoverAddressesFormBodyBase = ({
               className="get-started-view-button-key-blue-wallet-new-seed"
               onClick={onDiscoverAddresses}
             >
-              <T id="getStarted.discoverAddresses.scanBtn" m="Generate" />
+              <T id="getStarted.discoverAddresses.scanBtn" m="Submit" />
             </KeyBlueButton>
           </div>
         </div>
