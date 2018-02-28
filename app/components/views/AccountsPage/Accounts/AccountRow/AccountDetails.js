@@ -78,13 +78,14 @@ const AccountsList = ({
       </div>
     </div>
     <div className="account-actions">
-      {account.accountName !== "imported" ?
+      {/* {account.accountName !== "imported" ?
         <Tooltip text={<T id="accounts.rename.tip" m="Rename Account" />}>
           <div className="rename-account-button" onClick={showRenameAccount} />
-        </Tooltip> :
+        </Tooltip>
+        :
         <div></div>
-      }
-      {account.accountName !== "imported" && account.accountName !== "default" && account.total == 0 && !hidden ?
+      } */}
+      {/* {account.accountName !== "imported" && account.accountName !== "default" && account.total == 0 && !hidden ?
         <Tooltip text={<T id="accounts.show.tip" m="Show" />}>
           <div className="hide-account-button" onClick={hideAccount} />
         </Tooltip> :
@@ -93,7 +94,7 @@ const AccountsList = ({
             <div className="show-account-button" onClick={showAccount} />
           </Tooltip> :
           <div></div>
-      }
+      } */}
     </div>
   </div>
 );
