@@ -333,13 +333,13 @@ export function newWalletConfigCreation(testnet, walletPath) {
   fs.writeFileSync(dcrwalletCfg(getWalletPath(testnet, walletPath)), ini.stringify(dcrwConf));
 }
 export function dcrctlCfg(configPath) {
-  return path.resolve(configPath, "dcrctl.conf");
+  return path.resolve(configPath, "hxctl.conf");
 }
 
 export function dcrdCfg(configPath) {
-  return path.resolve(configPath, "dcrd.conf");
+  return path.resolve(configPath, "hxd.conf");
 }
 
 export function dcrwalletCfg(configPath) {
-  return path.resolve(configPath, "dcrwallet.conf");
+  return path.resolve(configPath, "hxwallet.conf");
 }
