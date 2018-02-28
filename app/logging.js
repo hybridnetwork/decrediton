@@ -39,7 +39,7 @@ const logFormatter = (opts) => {
   const lvl = logLevelsPrintable[opts.level]||"UNK";
   const time = opts.timestamp();
   const msg = opts.message;
-  const subsys = "DCTN";
+  const subsys = "HXI";
   return `${time} [${lvl}] ${subsys}: ${msg}`;
 };
 
@@ -56,7 +56,7 @@ export function createLogger(debug) {
     transports: [
       new (winston.transports.File)({
         json: false,
-        filename: path.join(app.getPath("userData"), "decrediton.log"),
+        filename: path.join(app.getPath("userData"), "hxify.log"),
         timestamp: logTimestamp,
         formatter: logFormatter,
       })
