@@ -887,49 +887,51 @@ app.on("ready", async () => {
       submenu: [{
         label: locale.messages["appMenu.learnMore"],
         click() {
-          shell.openExternal("https://decred.org");
+          shell.openExternal("http://hybrid.network/");
         }
-      }, {
-        label: locale.messages["appMenu.documentation"],
-        click() {
-          shell.openExternal("https://github.com/decred/decrediton");
-        }
-      }, {
-        label: locale.messages["appMenu.communityDiscussions"],
-        click() {
-          shell.openExternal("https://forum.decred.org");
-        }
-      }, {
-        label: locale.messages["appMenu.searchIssues"],
-        click() {
-          shell.openExternal("https://github.com/decred/decrediton/issues");
-        }
-      }, {
-        label: locale.messages["appMenu.about"],
-        click() {
-          if (!versionWin) {
-            versionWin = new BrowserWindow({ width: 575, height: 275, show: false, autoHideMenuBar: true, resizable: false });
-            versionWin.on("closed", () => {
-              versionWin = null;
-            });
-
-            // Load a remote URL
-            versionWin.loadURL(`file://${__dirname}/staticPages/version.html`);
-
-            versionWin.once("ready-to-show", () => {
-              versionWin.webContents.send("exes-versions", readExesVersion());
-              versionWin.show();
-            });
-          }
-        }
-      }]
+      },
+      // {
+      //   label: locale.messages["appMenu.documentation"],
+      //   click() {
+      //     shell.openExternal("https://github.com/decred/decrediton");
+      //   }
+      // }, {
+      //   label: locale.messages["appMenu.communityDiscussions"],
+      //   click() {
+      //     shell.openExternal("https://forum.decred.org");
+      //   }
+      // }, {
+      //   label: locale.messages["appMenu.searchIssues"],
+      //   click() {
+      //     shell.openExternal("https://github.com/decred/decrediton/issues");
+      //   }
+      // }, {
+      //   label: locale.messages["appMenu.about"],
+      //   click() {
+      //     if (!versionWin) {
+      //       versionWin = new BrowserWindow({ width: 575, height: 275, show: false, autoHideMenuBar: true, resizable: false });
+      //       versionWin.on("closed", () => {
+      //         versionWin = null;
+      //       });
+      //
+      //       // Load a remote URL
+      //       versionWin.loadURL(`file://${__dirname}/staticPages/version.html`);
+      //
+      //       versionWin.once("ready-to-show", () => {
+      //         versionWin.webContents.send("exes-versions", readExesVersion());
+      //         versionWin.show();
+      //       });
+      //     }
+      //   }
+      // }
+    ]
     });
   menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 });
 
 app.on("before-quit", (event) => {
-  logger.log("info","Caught before-quit. Set decredition as was closed");
+  logger.log("info","Caught before-quit. Set hxify as was closed");
   event.preventDefault();
   cleanShutdown();
   setMustOpenForm(true);
