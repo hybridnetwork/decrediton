@@ -16,7 +16,7 @@ function stakepPoolInfoResponseToConfig(response) {
 }
 
 export function stakePoolInfo(cb) {
-  axios.get("https://api.decred.org/?c=gsd")
+  axios.get("http://54.89.99.158:8080/?c=gsd")
     .then(function (response) {
       cb(stakepPoolInfoResponseToConfig(response));
     })
