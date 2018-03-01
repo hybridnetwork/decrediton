@@ -25,6 +25,10 @@ class App extends React.Component {
     daemonStopped: PropTypes.bool.isRequired,
   };
 
+  state = {
+    showAlphaMessage: true,
+  };
+
   constructor (props) {
     super(props);
     const { window } = props;
@@ -32,6 +36,10 @@ class App extends React.Component {
     this.refreshing = false;
 
     props.listenForAppReloadRequest(this.onReloadRequested);
+  }
+
+  dismissAlphaMessage () {
+      this.setState({ showAlphaMessage: false });
   }
 
   componentWillUnmount () {
@@ -62,6 +70,36 @@ class App extends React.Component {
   render() {
     const { locale, routes, children } = this.props;
     const pathname = getPage(routes);
+
+    const alphaMessageView = this.state.showAlphaMessage?
+        <div style={{
+            padding: '20px',
+            margin: '20px',
+            backgroundColor: '#862ee0',
+            borderRadius: '10px',
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            padding: '20px',
+            position: 'absolute',
+            width: '100%',
+            top: '0',
+            right: '0',
+            zIndex: '99999',
+        }}>
+            <div style={{ flex: '1 1 100%'  }}>
+                This product is in alpha, have a feature idea? &nbsp;&nbsp;&nbsp;&nbsp;Email it to features@hybrid.network.
+            </div>
+            <div style={{ flex: '0 0 50px' }}>
+                <button
+                    style={{ border: '0', color: '#fff', backgroundColor: 'transparent', cursor: 'pointer' }}
+                    onClick={this.dismissAlphaMessage}
+                >
+                    Dismiss
+                </button>
+            </div>
+        </div>: null;
+
     return (
       <MuiThemeProvider muiTheme={MUItheme}>
         <IntlProvider
@@ -74,6 +112,7 @@ class App extends React.Component {
             <SideBar />
             <Snackbar />
             <RouteTransition className="page-container" opts={ theme("springs.page") } {...{ wrapperComponent, pathname, ...fade }}>
+              { alphaMessageView}
               { children }
             </RouteTransition>
           </div>
