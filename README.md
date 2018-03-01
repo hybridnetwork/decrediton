@@ -41,11 +41,6 @@ This will start hxd and hxwallet for you.
 On macOS, double-click the .dmg file, drag the .app to your
 Applications folder.  Double click on hxify.app to start.
 
-You can also install via [brew cask](https://caskroom.github.io):
-```bash
-brew cask install hxify
-```
-
 From there follow the on screen instructions to setup your wallet.
 
 ### Options
