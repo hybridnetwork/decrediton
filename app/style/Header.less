@@ -7,8 +7,8 @@
   font-weight: 600;
   line-height: 20px;
   padding: 0px 5px;
-  color: #0c1e3e;
-  background-color: #d4f0fd;
+  color: @white;
+  background-color: @darkGrey;
   margin-left: 5px;
   margin-right: auto;
   margin-top: -4px;
@@ -18,7 +18,7 @@
 .header-get-started {
   padding-right: 42px;
   padding-left: 80px;
-  background-color: #596d81;
+  background-color: @darkGrey;
 }
 
 .header-top-get-started {
@@ -30,7 +30,7 @@
 .header-title-overview-get-started {
   height: 54px;
   padding-top: 13px;
-  color: #fff;
+  color: @white;
   font-size: 27px;
 }
 
@@ -38,7 +38,7 @@
   height: 54px;
   padding-top: 5px;
   font-size: 18px;
-  color: #c4cbd2;
+  color: @white;
   font-family: Inconsolata, monospace;
 }
 
@@ -48,7 +48,7 @@
   margin-left: 100px;
   margin-top: 53px;
   padding-bottom: 30px;
-  background-color: #fff;
+  background-color: @darkGrey;
   height: 77px;
 }
 
@@ -66,7 +66,7 @@
 
 .header-title-overview {
   padding-top: 14px;
-  color: #596d81;
+  color: @white;
   font-size: 27px;
 }
 
@@ -78,7 +78,7 @@
 
 .tabbedheader-title {
   margin-bottom: 14px;
-  color: #596d81;
+  color: @white;
   font-size: 27px;
 }
 
@@ -99,7 +99,7 @@
   align-self: flex-start;
   margin-top: -3px;
   white-space: pre-wrap;
-  color: #48566e;
+  color: @grey;
   font-size: 13px;
   line-height: 17px;
 }
@@ -116,13 +116,13 @@
   text-align: center;
   margin: 0px 11px 3px 11px;
   text-decoration: none;
-  color: #9ca8b5;
+  color: @grey;
   transition: color 0.13s ease-in-out;
 }
 
 .tabbedheader-tab:hover,
 .tabbedheader-tab-active {
-  color: #0c1e3e;
+  color: @white;
 }
 
 .tabbedheader-tabs {
@@ -133,7 +133,7 @@
 .tabbedheader-active-tab-caret {
   height: 5px;
   width: 15px;
-  background-color: #2ed8a3;
+  background-color: @green;
   position: relative;
 }
 
@@ -159,11 +159,11 @@
 .history {
   .header-icon-mixin;
 
-  background-image: @wallet-gray-icon;
+  background-image: @wallet-white-icon;
 }
 
 .mainnet {
-  height: 32px;
+  height: 115px;
   background-size: 168px;
   background-position: left center;
   background-repeat: no-repeat;
@@ -197,7 +197,7 @@
 }
 
 .testnet {
-  height: 32px;
+  height: 130px;
   background-repeat: no-repeat;
   background-image: @testnet-logo;
 }
@@ -223,5 +223,5 @@
 .walletGray {
   .header-icon-mixin;
 
-  background-image: @wallet-gray-icon;
+  background-image: @wallet-white-icon;
 }

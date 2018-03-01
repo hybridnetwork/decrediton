@@ -166,6 +166,7 @@ message AccountsResponse {
 		uint32 external_key_count = 4;
 		uint32 internal_key_count = 5;
 		uint32 imported_key_count = 6;
+    uint32 account_type = 7;
 	}
 	repeated Account accounts = 1;
 	bytes current_block_hash = 2;
@@ -188,6 +189,7 @@ message RescanResponse {
 message NextAccountRequest {
 	bytes passphrase = 1;
 	string account_name = 2;
+    uint32 account_type = 3;
 }
 message NextAccountResponse {
 	uint32 account_number = 1;
@@ -198,6 +200,7 @@ message NextAddressRequest {
 	enum Kind {
 	     BIP0044_EXTERNAL = 0;
 	     BIP0044_INTERNAL = 1;
+         BLISS = 2;
 	}
 	Kind kind = 2;
 	enum GapPolicy {
@@ -211,6 +214,11 @@ message NextAddressRequest {
 message NextAddressResponse {
 	string address = 1;
 	string public_key = 2;
+    enum AccountType {
+        BIP0044 = 0;
+        BLISS = 1;
+    }
+    AccountType account_type = 3;
 }
 
 message ImportPrivateKeyRequest {
@@ -556,6 +564,7 @@ message CreateWalletResponse {}
 
 message OpenWalletRequest {
 	bytes public_passphrase = 1;
+    bytes private_passphrase = 2;
 }
 message OpenWalletResponse {}
 
@@ -841,4 +850,5 @@ message ValidateAddressResponse {
 	ScriptType script_type = 8;
 	bytes pay_to_addr_script = 9;
 	uint32 sigs_required = 10;
+    bool is_compressed = 11;
 }

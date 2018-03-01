@@ -86,7 +86,6 @@ export const availableWalletsSelect = createSelector(
 export const previousWallet = get(["daemon", "previousWallet"]);
 export const getWalletName = get(["daemon", "walletName"]);
 
-const openWalletInputRequest = get(["walletLoader", "openWalletInputRequest"]);
 const createWalletInputRequest = get(["walletLoader", "createWalletInputRequest"]);
 const discoverAddressInputRequest = get(["walletLoader", "discoverAddressInputRequest"]);
 const advancedDaemonInputRequest = get(["walletLoader", "advancedDaemonInputRequest"]);
@@ -94,12 +93,14 @@ const openWalletRequestAttempt = get(["walletLoader", "walletOpenRequestAttempt"
 const selectCreateWalletInputRequest = get(["daemon", "selectCreateWalletInputRequest"]);
 
 export const isInputRequest = or(
-  and(openWalletInputRequest, not(openWalletRequestAttempt)),
   createWalletInputRequest,
   discoverAddressInputRequest,
   and(openForm, isAdvancedDaemon, advancedDaemonInputRequest),
   selectCreateWalletInputRequest
 );
+
+export const isOpenWalletPublicInputRequest = get(["walletLoader", "openWalletPublicInputRequest"]);
+export const isOpenWalletPrivateInputRequest = get(["walletLoader", "openWalletPrivateInputRequest"]);
 
 export const balances = or(get(["grpc", "balances"]), () => []);
 export const walletService = get(["grpc", "walletService"]);
@@ -138,9 +139,9 @@ export const networks = () => [{name: "testnet"}, {name: "mainnet"}];
 export const network = get(["daemon", "network"]);
 export const isTestNet = compose(eq("testnet"), network);
 export const isMainNet = not(isTestNet);
-export const currencies = () => [{name: "DCR"}, {name: "atoms"}];
+export const currencies = () => [{name: "Hx"}, {name: "atoms"}];
 export const currencyDisplay = get(["settings", "currentSettings", "currencyDisplay"]);
-export const unitDivisor = compose(disp => disp === "DCR" ? 100000000 : 1, currencyDisplay);
+export const unitDivisor = compose(disp => disp.toLowerCase() === "hx" ? 100000000 : 1, currencyDisplay);
 export const currentLocaleName = get(["settings", "currentSettings", "locale"]);
 
 export const sortedLocales = createSelector(
@@ -161,13 +162,15 @@ const getTxTypeStr = type => (TRANSACTION_TYPES)[type];
 export const txURLBuilder= createSelector(
   [network],
   (network) =>
-    (txHash) => `https://${network !== "testnet" ? "explorer" : network}.dcrdata.org/${network == "testnet" ? "explorer/" : ""}tx/${txHash}`
+    (txHash) => `http://ec2-52-70-30-246.compute-1.amazonaws.com:3006/api/tx/${txHash}`
+    // (txHash) => `https://${network !== "testnet" ? "explorer" : network}.dcrdata.org/${network == "testnet" ? "explorer/" : ""}tx/${txHash}`
 );
 
 export const blockURLBuilder= createSelector(
   [network],
   (network) =>
-    (txHash) => `https://${network !== "testnet" ? "explorer" : network}.dcrdata.org/${network == "testnet" ? "explorer/" : ""}block/${txHash}`
+    (txHash) => `http://ec2-52-70-30-246.compute-1.amazonaws.com:3006/api/block/${txHash}`
+    // (txHash) => `https://${network !== "testnet" ? "explorer" : network}.dcrdata.org/${network == "testnet" ? "explorer/" : ""}block/${txHash}`
 );
 
 const transactionNormalizer = createSelector(

@@ -11,8 +11,8 @@
   position: relative;
   overflow: hidden;
   padding-top: 0.5em;
-  border-top: 1px solid #f0f4f4;
-  background-image: @arrow-right-gray-icon;
+  border-top: 1px solid @grey;
+  background-image: @arrow-right-white-icon;
   background-position: 60px 30px;
   background-size: 5px auto;
   background-repeat: no-repeat;
@@ -20,7 +20,7 @@
 }
 
 .account-row {
-  background-color: #fff;
+  background-color: @darkGrey;
 }
 
 .account-row-hidden {
@@ -42,12 +42,12 @@
 }
 
 .account-row-top-last-tx {
-  color: #132f4b;
+  color: @white;
   font-size: 12px;
 }
 
 .account-row-top-spendable {
-  color: #596d81;
+  color: @grey;
   font-size: 12px;
   display: flex;
 }
@@ -62,7 +62,7 @@
   width: 50px;
   height: 56px;
   margin-right: 3em;
-  background-image: @wallet-gray-icon;
+  background-image: @wallet-white-icon;
   background-position: 50% 20px;
   background-size: 20px auto;
   background-repeat: no-repeat;
@@ -71,7 +71,7 @@
 .account-row-top-account-name {
   .inline-block-mixin;
 
-  color: #0c1e3e;
+  color: @white;
   font-size: 19px;
 }
 
@@ -81,7 +81,7 @@
   margin-top: 0.5em;
   float: right;
   font-family: Inconsolata, monospace;
-  color: #0c1e3e;
+  color: @white;
   font-size: 20px;
   font-weight: 700;
   display: flex;
@@ -139,7 +139,7 @@
 
 .account-row-details-bottom-title-name {
   margin-bottom: 0.5em;
-  color: #596d81;
+  color: @white;
 }
 
 .account-row-details-bottom-column-left .account-row-details-bottom-title-name {
@@ -147,21 +147,22 @@
   text-align: right;
 }
 
-.account-row-details-bottom-column-right .account-row-details-bottom-title-name {
+.account-row-details-bottom-column-right
+  .account-row-details-bottom-title-name {
   width: 26%;
   text-align: right;
 }
 
 .account-row-details-bottom-spec {
   text-align: right;
-  color: #0c1e3e;
+  color: @white;
   font-size: 12px;
   margin-bottom: 0.5em;
 }
 
 .account-row-details-bottom-spec-last {
-  border-bottom: 1px solid #e7eaed;
-  color: #0c1e3e;
+  border-bottom: 1px solid @darkGrey;
+  color: @white;
   font-size: 12px;
 }
 
@@ -175,7 +176,8 @@
   width: 24%;
 }
 
-.account-row-details-bottom-column-right .account-row-details-bottom-spec-value {
+.account-row-details-bottom-column-right
+  .account-row-details-bottom-spec-value {
   width: 70%;
 }
 
@@ -189,7 +191,7 @@
 }
 
 .account-row-details-bottom-rename {
-  color: #0c1e3e;
+  color: @white;
   font-size: 12px;
 }
 
@@ -200,8 +202,8 @@
 }
 
 .account-row-long {
-  border-top: 1px #a9b4bf solid;
-  border-bottom: 1px #a9b4bf solid;
+  border-top: 1px @grey solid;
+  border-bottom: 1px @grey solid;
 }
 
 // .account-row-short {
@@ -212,8 +214,8 @@
 }
 
 .account-row-rename {
-  border-top: 1px #a9b4bf solid;
-  border-bottom: 1px #a9b4bf solid;
+  border-top: 1px @grey solid;
+  border-bottom: 1px @grey solid;
 }
 
 .content-confirm-new-account {
@@ -237,7 +239,7 @@
   height: 40px;
   padding: 0px;
   background-color: transparent;
-  color: white;
+  color: @grey;
   border: 0;
   line-height: inherit;
   text-decoration: none;

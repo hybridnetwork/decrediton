@@ -2,11 +2,11 @@
 @import (reference) "./Icons.less";
 
 .sidebar-mainnet {
-  background-color: #0c1e3e;
+  background-color: @darkGrey;
 }
 
 .sidebar-testnet {
-  background-color: #586d82;
+  background-color: @darkGrey;
 }
 
 .sidebar-menu {
@@ -19,8 +19,8 @@
 .sidebar-logo {
   position: relative;
   z-index: 3;
-  height: 32px;
-  padding: 40px 0px 32px 40px;
+  height: 115px;
+  padding: 20px 0px 19px 20px;
 }
 
 .sidebar-main {
@@ -62,7 +62,7 @@
 }
 
 .sidebar-menu-total-balance-extended-bottom-account-name {
-  color: #69d5f7;
+  color: @blue;
   font-size: 13px;
   overflow: hidden;
   white-space: nowrap;
@@ -71,7 +71,7 @@
 
 .sidebar-menu-total-balance-extended-bottom-account-number {
   font-family: Inconsolata, monospace;
-  color: #2ed8a3;
+  color: @green;
   font-size: 15px;
 }
 
@@ -85,7 +85,7 @@
 .sidebar-menu-bottom-total-balance-short-separator {
   height: 7px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #69d5f7;
+  border-bottom: 1px solid @blue;
   background-image: @arrow-up-light-blue-icon;
   background-position: 50% 0px;
   background-repeat: no-repeat;
@@ -93,7 +93,7 @@
 
 .sidebar-menu-bottom-total-balance-short-name {
   float: left;
-  color: #69d5f7;
+  color: @blue;
   font-size: 13px;
   text-align: left;
   text-decoration: none;
@@ -107,8 +107,8 @@
 .sidebar-menu-bottom-total-balance-short-value {
   float: right;
   font-family: Inconsolata, monospace;
-  color: #2ed8a3;
-  font-size: 13px;
+  color: @purple;
+  font-size: 15px;
   text-align: right;
 }
 
@@ -118,12 +118,12 @@
   padding-top: 14px;
   padding-right: 18px;
   padding-left: 20px;
-  background-color: #08172e;
+  background-color: @darkGrey;
   font-size: 13px;
 }
 
 .sidebar-menu-bottom-latest-block-name {
-  color: #69d5f7;
+  color: @blue;
   font-size: 13px;
   line-height: 10px;
   text-align: left;
@@ -132,12 +132,12 @@
 
 .sidebar-menu-bottom-latest-block-number {
   font-family: Inconsolata, monospace;
-  color: #2ed8a3;
+  color: @purple;
 }
 
 .sidebar-menu-bottom-latest-block-time {
   float: right;
-  color: #69d5f7;
+  color: @blue;
   font-size: 13px;
   text-align: right;
   text-decoration: none;
@@ -145,13 +145,13 @@
 
 .sidebar-scroll::-webkit-scrollbar {
   width: 5px;
-  background-color: #09182d;
+  background-color: @darkGrey;
 }
 
 .sidebar-testnet .sidebar-scroll::-webkit-scrollbar {
-  background-color: #5d6a77;
+  background-color: @grey;
 }
 
 .sidebar-scroll::-webkit-scrollbar-thumb {
-  background-color: #8795a2;
+  background-color: @darkGrey;
 }

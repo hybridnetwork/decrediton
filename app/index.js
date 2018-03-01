@@ -53,7 +53,7 @@ var initialState = {
   },
   version: {
     // RequiredVersion
-    requiredVersion: "4.27.0",
+    requiredVersion: "4.25.0",
     versionInvalid: false,
     versionInvalidError: null,
     // VersionService
@@ -68,16 +68,16 @@ var initialState = {
   grpc: {
     // WalletService
     address: "127.0.0.1",
-    port: "9121",
+    port: "12010",
     walletService: null,
     requiredStakepoolAPIVersion: 2,
     recentBlockTimestamp: null,
 
     // ints for mainnet and testnet protocol hex
-    // TestNet2 CurrencyNet = 0x48e7a065
-    testnet: 1223139429,
-    // MainNet CurrencyNet = 0xd9b400f9
-    mainnet: 3652452601,
+    // TestNet2 CurrencyNet = 0x9ab5693a
+    testnet: 2595580218,
+    // MainNet CurrencyNet = 0x1125f51b
+    mainnet: 287700251,
 
     // GetWalletService
     getWalletServiceRequestAttempt: false,

@@ -86,6 +86,7 @@ goog.exportSymbol('proto.walletrpc.NextAddressRequest', null, global);
 goog.exportSymbol('proto.walletrpc.NextAddressRequest.GapPolicy', null, global);
 goog.exportSymbol('proto.walletrpc.NextAddressRequest.Kind', null, global);
 goog.exportSymbol('proto.walletrpc.NextAddressResponse', null, global);
+goog.exportSymbol('proto.walletrpc.NextAddressResponse.AccountType', null, global);
 goog.exportSymbol('proto.walletrpc.OpenWalletRequest', null, global);
 goog.exportSymbol('proto.walletrpc.OpenWalletResponse', null, global);
 goog.exportSymbol('proto.walletrpc.PingRequest', null, global);
@@ -3005,7 +3006,8 @@ proto.walletrpc.AccountsResponse.Account.toObject = function(includeInstance, ms
     totalBalance: jspb.Message.getFieldWithDefault(msg, 3, 0),
     externalKeyCount: jspb.Message.getFieldWithDefault(msg, 4, 0),
     internalKeyCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    importedKeyCount: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    importedKeyCount: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    accountType: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -3065,6 +3067,10 @@ proto.walletrpc.AccountsResponse.Account.deserializeBinaryFromReader = function(
     case 6:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setImportedKeyCount(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAccountType(value);
       break;
     default:
       reader.skipField();
@@ -3134,6 +3140,13 @@ proto.walletrpc.AccountsResponse.Account.serializeBinaryToWriter = function(mess
   if (f !== 0) {
     writer.writeUint32(
       6,
+      f
+    );
+  }
+  f = message.getAccountType();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
       f
     );
   }
@@ -3227,6 +3240,21 @@ proto.walletrpc.AccountsResponse.Account.prototype.getImportedKeyCount = functio
 /** @param {number} value */
 proto.walletrpc.AccountsResponse.Account.prototype.setImportedKeyCount = function(value) {
   jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 account_type = 7;
+ * @return {number}
+ */
+proto.walletrpc.AccountsResponse.Account.prototype.getAccountType = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.walletrpc.AccountsResponse.Account.prototype.setAccountType = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 
@@ -3932,7 +3960,8 @@ proto.walletrpc.NextAccountRequest.prototype.toObject = function(opt_includeInst
 proto.walletrpc.NextAccountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     passphrase: msg.getPassphrase_asB64(),
-    accountName: jspb.Message.getFieldWithDefault(msg, 2, "")
+    accountName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    accountType: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3977,6 +4006,10 @@ proto.walletrpc.NextAccountRequest.deserializeBinaryFromReader = function(msg, r
       var value = /** @type {string} */ (reader.readString());
       msg.setAccountName(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAccountType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4017,6 +4050,13 @@ proto.walletrpc.NextAccountRequest.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getAccountType();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
       f
     );
   }
@@ -4074,6 +4114,21 @@ proto.walletrpc.NextAccountRequest.prototype.getAccountName = function() {
 /** @param {string} value */
 proto.walletrpc.NextAccountRequest.prototype.setAccountName = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 account_type = 3;
+ * @return {number}
+ */
+proto.walletrpc.NextAccountRequest.prototype.getAccountType = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.walletrpc.NextAccountRequest.prototype.setAccountType = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -4375,7 +4430,8 @@ proto.walletrpc.NextAddressRequest.serializeBinaryToWriter = function(message, w
  */
 proto.walletrpc.NextAddressRequest.Kind = {
   BIP0044_EXTERNAL: 0,
-  BIP0044_INTERNAL: 1
+  BIP0044_INTERNAL: 1,
+  BLISS: 2
 };
 
 /**
@@ -4481,7 +4537,8 @@ proto.walletrpc.NextAddressResponse.prototype.toObject = function(opt_includeIns
 proto.walletrpc.NextAddressResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    publicKey: jspb.Message.getFieldWithDefault(msg, 2, "")
+    publicKey: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    accountType: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -4526,6 +4583,10 @@ proto.walletrpc.NextAddressResponse.deserializeBinaryFromReader = function(msg, 
       var value = /** @type {string} */ (reader.readString());
       msg.setPublicKey(value);
       break;
+    case 3:
+      var value = /** @type {!proto.walletrpc.NextAddressResponse.AccountType} */ (reader.readEnum());
+      msg.setAccountType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4569,8 +4630,23 @@ proto.walletrpc.NextAddressResponse.serializeBinaryToWriter = function(message, 
       f
     );
   }
+  f = message.getAccountType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.walletrpc.NextAddressResponse.AccountType = {
+  BIP0044: 0,
+  BLISS: 1
+};
 
 /**
  * optional string address = 1;
@@ -4599,6 +4675,21 @@ proto.walletrpc.NextAddressResponse.prototype.getPublicKey = function() {
 /** @param {string} value */
 proto.walletrpc.NextAddressResponse.prototype.setPublicKey = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional AccountType account_type = 3;
+ * @return {!proto.walletrpc.NextAddressResponse.AccountType}
+ */
+proto.walletrpc.NextAddressResponse.prototype.getAccountType = function() {
+  return /** @type {!proto.walletrpc.NextAddressResponse.AccountType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {!proto.walletrpc.NextAddressResponse.AccountType} value */
+proto.walletrpc.NextAddressResponse.prototype.setAccountType = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -16356,7 +16447,8 @@ proto.walletrpc.OpenWalletRequest.prototype.toObject = function(opt_includeInsta
  */
 proto.walletrpc.OpenWalletRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    publicPassphrase: msg.getPublicPassphrase_asB64()
+    publicPassphrase: msg.getPublicPassphrase_asB64(),
+    privatePassphrase: msg.getPrivatePassphrase_asB64()
   };
 
   if (includeInstance) {
@@ -16397,6 +16489,10 @@ proto.walletrpc.OpenWalletRequest.deserializeBinaryFromReader = function(msg, re
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setPublicPassphrase(value);
       break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setPrivatePassphrase(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -16430,6 +16526,13 @@ proto.walletrpc.OpenWalletRequest.serializeBinaryToWriter = function(message, wr
   if (f.length > 0) {
     writer.writeBytes(
       1,
+      f
+    );
+  }
+  f = message.getPrivatePassphrase_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      2,
       f
     );
   }
@@ -16472,6 +16575,45 @@ proto.walletrpc.OpenWalletRequest.prototype.getPublicPassphrase_asU8 = function(
 /** @param {!(string|Uint8Array)} value */
 proto.walletrpc.OpenWalletRequest.prototype.setPublicPassphrase = function(value) {
   jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional bytes private_passphrase = 2;
+ * @return {!(string|Uint8Array)}
+ */
+proto.walletrpc.OpenWalletRequest.prototype.getPrivatePassphrase = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * optional bytes private_passphrase = 2;
+ * This is a type-conversion wrapper around `getPrivatePassphrase()`
+ * @return {string}
+ */
+proto.walletrpc.OpenWalletRequest.prototype.getPrivatePassphrase_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getPrivatePassphrase()));
+};
+
+
+/**
+ * optional bytes private_passphrase = 2;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getPrivatePassphrase()`
+ * @return {!Uint8Array}
+ */
+proto.walletrpc.OpenWalletRequest.prototype.getPrivatePassphrase_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getPrivatePassphrase()));
+};
+
+
+/** @param {!(string|Uint8Array)} value */
+proto.walletrpc.OpenWalletRequest.prototype.setPrivatePassphrase = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -26962,7 +27104,8 @@ proto.walletrpc.ValidateAddressResponse.toObject = function(includeInstance, msg
     pkScriptAddrsList: jspb.Message.getRepeatedField(msg, 7),
     scriptType: jspb.Message.getFieldWithDefault(msg, 8, 0),
     payToAddrScript: msg.getPayToAddrScript_asB64(),
-    sigsRequired: jspb.Message.getFieldWithDefault(msg, 10, 0)
+    sigsRequired: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    isCompressed: jspb.Message.getFieldWithDefault(msg, 11, false)
   };
 
   if (includeInstance) {
@@ -27038,6 +27181,10 @@ proto.walletrpc.ValidateAddressResponse.deserializeBinaryFromReader = function(m
     case 10:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSigsRequired(value);
+      break;
+    case 11:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsCompressed(value);
       break;
     default:
       reader.skipField();
@@ -27135,6 +27282,13 @@ proto.walletrpc.ValidateAddressResponse.serializeBinaryToWriter = function(messa
   if (f !== 0) {
     writer.writeUint32(
       10,
+      f
+    );
+  }
+  f = message.getIsCompressed();
+  if (f) {
+    writer.writeBool(
+      11,
       f
     );
   }
@@ -27374,6 +27528,23 @@ proto.walletrpc.ValidateAddressResponse.prototype.getSigsRequired = function() {
 /** @param {number} value */
 proto.walletrpc.ValidateAddressResponse.prototype.setSigsRequired = function(value) {
   jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional bool is_compressed = 11;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.walletrpc.ValidateAddressResponse.prototype.getIsCompressed = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 11, false));
+};
+
+
+/** @param {boolean} value */
+proto.walletrpc.ValidateAddressResponse.prototype.setIsCompressed = function(value) {
+  jspb.Message.setField(this, 11, value);
 };
 
 

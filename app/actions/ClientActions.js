@@ -22,7 +22,7 @@ function getWalletServiceSuccess(walletService) {
   return (dispatch, getState) => {
     dispatch({ walletService, type: GETWALLETSERVICE_SUCCESS });
     setTimeout(() => { dispatch(loadActiveDataFiltersAttempt()); }, 1000);
-    setTimeout(() => { dispatch(getNextAddressAttempt(0)); }, 1000);
+    setTimeout(() => { dispatch(getNextAddressAttempt(0, 0)); }, 1000);
     setTimeout(() => { dispatch(getTicketPriceAttempt()); }, 1000);
     setTimeout(() => { dispatch(getPingAttempt()); }, 1000);
     setTimeout(() => { dispatch(getNetworkAttempt()); }, 1000);
@@ -201,6 +201,7 @@ const getAccountsBalances = (accounts) => (dispatch, getState) => {
           externalKeys: account.getExternalKeyCount(),
           internalKeys: account.getInternalKeyCount(),
           importedKeys: account.getImportedKeyCount(),
+          accountType: account.getAccountType(),
           hidden,
           HDPath,
           total: resp.getTotal(),

@@ -39,7 +39,7 @@ export function initWalletCfg(testnet, walletPath) {
     config.set("maxperblock","5");
   }
   if (!config.has("currency_display")) {
-    config.set("currency_display","DCR");
+    config.set("currency_display","Hx");
   }
   if (!config.has("hiddenaccounts")) {
     var hiddenAccounts = Array();
@@ -117,21 +117,21 @@ export function validateGlobalCfgFile() {
 // electron in production mode.
 export function appDataDirectory() {
   if (os.platform() == "win32") {
-    return path.join(os.homedir(), "AppData", "Local", "Decrediton");
+    return path.join(os.homedir(), "AppData", "Local", "hxify");
   } else if (process.platform === "darwin") {
-    return path.join(os.homedir(), "Library","Application Support","decrediton");
+    return path.join(os.homedir(), "Library","Application Support","hxify");
   } else {
-    return path.join(os.homedir(),".config","decrediton");
+    return path.join(os.homedir(),".config","hxify");
   }
 }
 
 export function getDcrdPath() {
   if (os.platform() == "win32") {
-    return path.join(os.homedir(), "AppData", "Local", "Dcrd");
+    return path.join(os.homedir(), "AppData", "Local", "Hxd");
   } else if (process.platform === "darwin") {
-    return path.join(os.homedir(), "Library","Application Support","dcrd");
+    return path.join(os.homedir(), "Library","Application Support","Hxd");
   } else {
-    return path.join(os.homedir(),".dcrd");
+    return path.join(os.homedir(),".hxd");
   }
 }
 
@@ -164,7 +164,7 @@ export function readDcrdConfig(configPath, testnet) {
     let newCfg = {};
     newCfg.rpc_host = "127.0.0.1";
     if (testnet) {
-      newCfg.rpc_port = "19109";
+      newCfg.rpc_port = "12008";
     } else {
       newCfg.rpc_port = "9109";
     }
@@ -221,12 +221,12 @@ export function getDcrdCert(dcrdCertPath) {
 
   var certPath = "";
   if (os.platform() == "win32") {
-    certPath = path.join(os.homedir(), "AppData", "Local", "Dcrd", "rpc.cert");
+    certPath = path.join(os.homedir(), "AppData", "Local", "Hxd", "rpc.cert");
   } else if (os.platform() == "darwin") {
     certPath = path.join(os.homedir(), "Library", "Application Support",
-      "Dcrd", "rpc.cert");
+      "Hxd", "rpc.cert");
   } else {
-    certPath = path.join(os.homedir(), ".dcrd", "rpc.cert");
+    certPath = path.join(os.homedir(), ".hxd", "rpc.cert");
   }
 
   var cert = fs.readFileSync(certPath);
@@ -303,7 +303,7 @@ export function newWalletConfigCreation(testnet, walletPath) {
     {
       rpcuser: "USER",
       rpcpass: "PASSWORD",
-      rpclisten: "127.0.0.1:9109",
+      rpclisten: "127.0.0.1:9678",
       testnet: testnet ? "1" : "0"
     }
   };
@@ -313,7 +313,7 @@ export function newWalletConfigCreation(testnet, walletPath) {
     {
       rpcuser: "USER",
       rpcpass: "PASSWORD",
-      rpcserver: "127.0.0.1:9109",
+      rpcserver: "127.0.0.1:9678",
       testnet: testnet ? "1" : "0"
     }
   };

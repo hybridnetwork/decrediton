@@ -35,7 +35,7 @@ const DaemonLoadingFormBody = ({
       showLongWaitMessage ?
         <Aux>
           <div className="get-started-fetch-headers-message">
-            <T id="getStarted.chainLoading" m="The Decred chain is currently loading and may take a few minutes." />
+            <T id="getStarted.chainLoading" m="The Hx chain is currently loading and may take a few minutes." />
           </div>
           <div className="get-started-bottom-buttons">
             <SlateGrayButton onClick={onShowLogs}>
@@ -48,7 +48,7 @@ const DaemonLoadingFormBody = ({
         <div className="get-started-content-instructions">
           <div className="get-started-content-instructions-blockchain-syncing">
             <div className="get-started-instructions-txt">
-              <T id="getStarted.chainLoadingDelayReminder" m="If you are starting decrediton for the first time, this may take a while." />
+              <T id="getStarted.chainLoadingDelayReminder" m="If you are starting Hxify for the first time, this may take a while." />
             </div>
           </div>
           <LinearProgress

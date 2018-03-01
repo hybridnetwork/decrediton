@@ -33,10 +33,13 @@ export const createWallet = log((loader, pubPass, privPass, seed) =>
     loader.createWallet(request, error => error ? reject(error) : resolve());
   }), "Create Wallet", logOptionNoArgs());
 
-export const openWallet = log((loader, pubPass) =>
+export const openWallet = log((loader, pubPass, privPass) =>
   new Promise((resolve, reject) => {
     const request = new OpenWalletRequest();
     request.setPublicPassphrase(new Uint8Array(Buffer.from(pubPass)));
+    if (privPass && privPass.length > 0) {
+      request.setPrivatePassphrase(new Uint8Array(Buffer.from(privPass)));
+    }
     loader.openWallet(request, error => error ? reject(error) : resolve());
   }), "Open Wallet", logOptionNoArgs());
 
@@ -48,7 +51,7 @@ export const closeWallet = log((loader) =>
 export const discoverAddresses = log((loader, shouldDiscoverAccounts, privPass) =>
   new Promise((resolve, reject) => {
     const request = new DiscoverAddressesRequest();
-    request.setDiscoverAccounts(!!shouldDiscoverAccounts);
+    request.setDiscoverAccounts(shouldDiscoverAccounts);
     if (shouldDiscoverAccounts) {
       request.setPrivatePassphrase(new Uint8Array(Buffer.from(privPass)));
     }

@@ -75,25 +75,27 @@ export const createWalletRequest = (pubPass, privPass, seed, existing) =>
       .then(() => {
         const { daemon: { walletName }} = getState();
         const config = getWalletCfg(isTestNet(getState()), walletName);
-        config.delete("discoveraccounts");
+        // config.delete("discoveraccounts");
         dispatch({response: {}, type: CREATEWALLET_SUCCESS });
         dispatch(clearStakePoolConfigNewWallet());
         dispatch({complete: !existing, type: UPDATEDISCOVERACCOUNTS});
-        config.set("discoveraccounts", !existing);
+        // config.set("discoveraccounts", !existing);
         dispatch(prepStartDaemon());
       })
       .catch(error => dispatch({ error, type: CREATEWALLET_FAILED }));
   };
 
-export const OPENWALLET_INPUT = "OPENWALLET_INPUT";
-export const OPENWALLET_FAILED_INPUT = "OPENWALLET_FAILED_INPUT";
+export const OPENWALLET_PUBLIC_INPUT = "OPENWALLET_PUBLIC_INPUT";
+export const OPENWALLET_FAILED_PUBLIC_INPUT = "OPENWALLET_FAILED_PUBLIC_INPUT";
+export const OPENWALLET_PRIVATE_INPUT = "OPENWALLET_PRIVATE_INPUT";
+export const OPENWALLET_FAILED_PRIVATE_INPUT = "OPENWALLET_FAILED_PRIVATE_INPUT";
 export const OPENWALLET_ATTEMPT = "OPENWALLET_ATTEMPT";
 export const OPENWALLET_FAILED = "OPENWALLET_FAILED";
 export const OPENWALLET_SUCCESS = "OPENWALLET_SUCCESS";
 
-export const openWalletAttempt = (pubPass, retryAttempt) => (dispatch, getState) => {
+export const openWalletAttempt = (pubPass, privPass, retryAttempt) => (dispatch, getState) => {
   dispatch({ type: OPENWALLET_ATTEMPT });
-  return openWallet(getState().walletLoader.loader, pubPass)
+  return openWallet(getState().walletLoader.loader, "public", privPass)
     .then(() => {
       dispatch({ type: OPENWALLET_SUCCESS });
       dispatch(prepStartDaemon());
@@ -102,11 +104,20 @@ export const openWalletAttempt = (pubPass, retryAttempt) => (dispatch, getState)
       if (error.message.includes("wallet already loaded")) {
         dispatch({response: {}, type: OPENWALLET_SUCCESS});
         dispatch(prepStartDaemon());
+
+        dispatch({ type: 'DISCOVERADDRESS_INPUT' });
+
+      } else if (error.message.includes("invalid passphrase") && error.message.includes("private key")) {
+        if (retryAttempt) {
+          dispatch({ error, type: OPENWALLET_FAILED_PRIVATE_INPUT });
+        } else {
+          dispatch({ type: OPENWALLET_PRIVATE_INPUT });
+        }
       } else if (error.message.includes("invalid passphrase") && error.message.includes("public key")) {
         if (retryAttempt) {
-          dispatch({ error, type: OPENWALLET_FAILED_INPUT });
+          dispatch({ error, type: OPENWALLET_FAILED_PUBLIC_INPUT });
         } else {
-          dispatch({ type: OPENWALLET_INPUT });
+          dispatch({ type: OPENWALLET_PUBLIC_INPUT });
         }
       } else {
         dispatch({ error, type: OPENWALLET_FAILED });
@@ -195,16 +206,17 @@ export const discoverAddressAttempt = (privPass) => (dispatch, getState) => {
   const { walletLoader: {loader, discoverAccountsComplete }} = getState();
   const { daemon: { walletName }} = getState();
   dispatch({ type: DISCOVERADDRESS_ATTEMPT });
-  discoverAddresses(loader, !discoverAccountsComplete, privPass)
+  dispatch({ type: 'DISCOVERADDRESS_INPUT' });
+  discoverAddresses(loader, true, privPass)
     .then(() => {
       const { subscribeBlockNtfnsResponse } = getState().walletLoader;
 
-      if (!discoverAccountsComplete) {
-        const config = getWalletCfg(isTestNet(getState()), walletName);
-        config.delete("discoveraccounts");
-        config.set("discoveraccounts", true);
-        dispatch({complete: true, type: UPDATEDISCOVERACCOUNTS});
-      }
+      // if (!discoverAccountsComplete) {
+      //   const config = getWalletCfg(isTestNet(getState()), walletName);
+      //   config.delete("discoveraccounts");
+      //   config.set("discoveraccounts", true);
+      //   dispatch({complete: true, type: UPDATEDISCOVERACCOUNTS});
+      // }
 
       dispatch({response: {}, type: DISCOVERADDRESS_SUCCESS});
       if (subscribeBlockNtfnsResponse !== null) dispatch(fetchHeadersAttempt());
@@ -229,12 +241,12 @@ const subscribeBlockAttempt = () => (dispatch, getState) => {
   return subscribeToBlockNotifications(loader)
     .then(() => {
       dispatch({response: {}, type: SUBSCRIBEBLOCKNTFNS_SUCCESS});
-      if (discoverAccountsComplete) {
-        dispatch(discoverAddressAttempt());
-      } else {
+      // if (discoverAccountsComplete) {
+      //   dispatch(discoverAddressAttempt());
+      // } else {
         // This is dispatched to indicate we should wait for user input to discover addresses.
         dispatch({response: {}, type: DISCOVERADDRESS_INPUT});
-      }
+      // }
     })
     .catch(error => dispatch({ error, type: SUBSCRIBEBLOCKNTFNS_FAILED }));
 };
@@ -281,7 +293,7 @@ export const NEEDED_BLOCKS_DETERMINED = "NEEDED_BLOCKS_DETERMINED";
 export function determineNeededBlocks() {
   return (dispatch, getState) => {
     const network = getState().daemon.network;
-    const explorerInfoURL = `https://${network}.decred.org/api/status`;
+    const explorerInfoURL = `http://explorer1.hybrid.network/api/status`;
     axios.get(explorerInfoURL, {timeout: 5000})
       .then(function (response) {
         const neededBlocks = response.data.info.blocks;
