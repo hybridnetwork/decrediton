@@ -60,8 +60,8 @@ Options
   --debug  -d        Debug daemon/wallet messages
   --testnet          Connect to testnet
   --mainnet          Connect to mainnet
-  --extrawalletargs  Pass extra arguments to dcrwallet
-  --customBinPath    Custom path for dcrd/dcrwallet/dcrctl binaries
+  --extrawalletargs  Pass extra arguments to hxwallet
+  --customBinPath    Custom path for hxd/hxwallet/hxctl binaries
 `);
 }
 
@@ -179,14 +179,14 @@ let daemonIsAdvanced = globalCfg.get("daemon_start_advanced");
 
 function closeDCRW() {
   if (require("is-running")(dcrwPID) && os.platform() != "win32") {
-    logger.log("info", "Sending SIGINT to dcrwallet at pid:" + dcrwPID);
+    logger.log("info", "Sending SIGINT to hxwallet at pid:" + dcrwPID);
     process.kill(dcrwPID, "SIGINT");
   }
 }
 
 function closeDCRD() {
   if (require("is-running")(dcrdPID) && os.platform() != "win32") {
-    logger.log("info", "Sending SIGINT to dcrd at pid:" + dcrdPID);
+    logger.log("info", "Sending SIGINT to hxd at pid:" + dcrdPID);
     process.kill(dcrdPID, "SIGINT");
   }
 }
@@ -274,10 +274,10 @@ ipcMain.on("start-daemon", (event, walletPath, appData, testnet) => {
     return;
   }
   if(appData){
-    logger.log("info", "launching dcrd with different appdata directory");
+    logger.log("info", "launching hxd with different appdata directory");
   }
   if (dcrdPID && dcrdConfig) {
-    logger.log("info", "dcrd already started " + dcrdPID);
+    logger.log("info", "hxd already started " + dcrdPID);
     event.returnValue = dcrdConfig;
     return;
   }
@@ -285,7 +285,7 @@ ipcMain.on("start-daemon", (event, walletPath, appData, testnet) => {
     dcrdConfig = launchDCRD(walletPath, appData, testnet);
     dcrdPID = dcrdConfig.pid;
   } catch (e) {
-    logger.log("error", "error launching dcrd: " + e);
+    logger.log("error", "error launching hxd: " + e);
   }
   event.returnValue = dcrdConfig;
 });
@@ -320,7 +320,7 @@ ipcMain.on("start-wallet", (event, walletPath, testnet) => {
   try {
     dcrwPID = launchDCRWallet(walletPath, testnet);
   } catch (e) {
-    logger.log("error", "error launching dcrwallet: " + e);
+    logger.log("error", "error launching hxwallet: " + e);
   }
   event.returnValue = getWalletCfg(testnet, walletPath);
 });
@@ -468,7 +468,7 @@ const launchDCRD = (walletPath, appdata, testnet) => {
       var pipe = win32ipc.createPipe("out");
       args.push(util.format("--piperx=%d", pipe.readEnd));
     } catch (e) {
-      logger.log("error", "can't find proper module to launch dcrd: " + e);
+      logger.log("error", "can't find proper module to launch hxd: " + e);
     }
   }
 
@@ -480,7 +480,7 @@ const launchDCRD = (walletPath, appdata, testnet) => {
   });
 
   dcrd.on("error", function (err) {
-    logger.log("error", "Error running dcrd.  Check logs and restart! " + err);
+    logger.log("error", "Error running hxd.  Check logs and restart! " + err);
     mainWindow.webContents.executeJavaScript("alert(\"Error running hxd.  Check logs and restart! " + err + "\");");
     mainWindow.webContents.executeJavaScript("window.close();");
   });
@@ -489,11 +489,11 @@ const launchDCRD = (walletPath, appdata, testnet) => {
     if (daemonIsAdvanced)
       return;
     if (code !== 0) {
-      logger.log("error", "dcrd closed due to an error.  Check hxd logs and contact support if the issue persists.");
+      logger.log("error", "hxd closed due to an error.  Check hxd logs and contact support if the issue persists.");
       mainWindow.webContents.executeJavaScript("alert(\"hxd closed due to an error.  Check hxd logs and contact support if the issue persists.\");");
       mainWindow.webContents.executeJavaScript("window.close();");
     } else {
-      logger.log("info", `dcrd exited with code ${code}`);
+      logger.log("info", `hxd exited with code ${code}`);
     }
   });
 
