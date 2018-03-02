@@ -394,7 +394,7 @@ export default function control(state = {}, action) {
       maxFee: action.maxFee,
       maxPriceAbsolute: action.maxPriceAbsolute,
       maxPriceRelative: action.maxPriceRelative,
-      maxPerBlock: action.maxPriceRelative,
+      maxPerBlock: action.maxPerBlock,
     };
   default:
     return state;
