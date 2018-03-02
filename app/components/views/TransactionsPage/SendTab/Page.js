@@ -78,13 +78,13 @@ const SendPage = ({
           loading={isSendingTransaction}
           buttonLabel={<T id="send.sendBtn" m="Send" />}
         />
-        <Aux show={hasUnminedTransactions}>
+        {/* <Aux show={hasUnminedTransactions}>
           <Tooltip md text={<T id="send.rebroadcastTooltip" m="Rebroadcasting transactions may help in situations when a transaction has been sent to a node that had poor connectivity to the general Hx network."/>}>
             <KeyBlueButton onClick={onRebroadcastUnmined}>
               <T id="send.rebroadcastUnmined" m="Rebroadcast"/>
             </KeyBlueButton>
           </Tooltip>
-        </Aux>
+        </Aux> */}
         <div className="estimation-area-send">
           <div className="total-amount-send">
             <div className="total-amount-send-text">
