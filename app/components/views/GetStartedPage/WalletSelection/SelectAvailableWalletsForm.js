@@ -24,7 +24,7 @@ const SelectAvailableWalletsForm = ({
             onChange={onChangeAvailableWallets} />
         </div>
       </div>
-      <div className="advanced-daemon-row">
+      <div className="advanced-daemon-row advanced-daemon-row--with-flex">
         <KeyBlueButton onClick={startWallet}>
           <T id="wallet.form.start.btn" m="Start selected wallet"/>
         </KeyBlueButton>

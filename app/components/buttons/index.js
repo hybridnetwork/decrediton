@@ -10,6 +10,7 @@ export { default as TransactionLink } from "./TransactionLink";
 
 import ModalButton from "./ModalButton";
 import KeyBlueButton from "./KeyBlueButton";
+import KeyDestructionButton from './KeyDestructionButton';
 import AutoBuyerSwitch from "./AutoBuyerSwitch";
 import NetworkSwitch from "./NetworkSwitch";
 import DangerButton from "./DangerButton";
@@ -44,4 +45,4 @@ export const ChangePassphraseButton = mbb("change-password-default-icon", Change
 export const PassphraseModalButton = mbb(null, PassphraseModal, KeyBlueButton);
 export const PassphraseModalSwitch = mbb(null, PassphraseModal, AutoBuyerSwitch);
 export const RemoveStakePoolButton = mbb(null, ConfirmModal, DangerButton);
-export const RemoveWalletButton = mbb(null, ConfirmModal, KeyBlueButton);
+export const RemoveWalletButton = mbb(null, ConfirmModal, KeyDestructionButton);
