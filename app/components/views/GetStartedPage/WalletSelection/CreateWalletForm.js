@@ -46,7 +46,7 @@ const CreateWalletForm = ({
           />
         </div>
       </div>
-      <div className="advanced-daemon-row">
+      <div className="advanced-daemon-row advanced-daemon-row--with-flex advanced-daemon-row--with-padding-top">
         <KeyBlueButton onClick={createWallet}>
           <T id="wallet.create.button" m="Create new wallet" />
         </KeyBlueButton>

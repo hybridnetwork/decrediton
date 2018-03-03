@@ -24,17 +24,17 @@ const SelectAvailableWalletsForm = ({
             onChange={onChangeAvailableWallets} />
         </div>
       </div>
-      <div className="advanced-daemon-row advanced-daemon-row--with-flex">
+      <div className="advanced-daemon-row advanced-daemon-row--with-flex advanced-daemon-row--with-padding-top">
+        <RemoveWalletButton
+        modalTitle={<T id="stakepools.list.removeConfirmTitle" m="Remove Wallet" />}
+        buttonLabel={<T id="stakepools.list.btnRemove" m="Remove"/>}
+        modalContent={
+          <T id="stakepools.list.confirmRemove" m="Do you confirm removal of wallet {wallet}?"
+            values={{wallet: (<span className="mono">{selectedWallet && selectedWallet.label}</span>)}}/>}
+        onSubmit={() => onRemoveWallet(selectedWallet)}/>
         <KeyBlueButton onClick={startWallet}>
           <T id="wallet.form.start.btn" m="Start selected wallet"/>
         </KeyBlueButton>
-        <RemoveWalletButton
-          modalTitle={<T id="stakepools.list.removeConfirmTitle" m="Remove Wallet" />}
-          buttonLabel={<T id="stakepools.list.btnRemove" m="Remove"/>}
-          modalContent={
-            <T id="stakepools.list.confirmRemove" m="Do you confirm removal of wallet {wallet}?"
-              values={{wallet: (<span className="mono">{selectedWallet && selectedWallet.label}</span>)}}/>}
-          onSubmit={() => onRemoveWallet(selectedWallet)}/>
       </div>
     </Aux>
   );

@@ -283,13 +283,25 @@
   color: @white;
   float: left;
   width: 100%;
-  height: 50px;
+  // height: 50px;
 
   &.advanced-daemon-row--with-flex {
       float: none;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
+
+      & > * {
+          margin-left: 20px;
+
+          &:first-child {
+              margin-left: 0;
+          }
+      }
+  }
+
+  &.advanced-daemon-row--with-padding-top {
+      padding-top: 30px;
   }
 }
 
