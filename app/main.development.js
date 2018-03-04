@@ -677,7 +677,14 @@ app.on("ready", async () => {
     locale = locales.find(value => value.key === newCfgLocale);
   }
 
-  let windowOpts = {show: false, width: 1178, height: 790, page: "app.html"};
+  let windowOpts = {
+    show: false,
+    width: 1190,
+    height: 800,
+    minWidth: 1190,
+    minHeight: 800,
+    page: "app.html",
+  };
   if (!primaryInstance) {
     windowOpts = {show: true, width: 575, height: 275, autoHideMenuBar: true,
       resizable: false, page: "staticPages/secondInstance.html"};
