@@ -22,7 +22,7 @@ const CreateWalletForm = ({
     <Aux>
       <div className="advanced-daemon-row">
         <div className="advanced-daemon-label">
-          <T id="advanced.remote.rpcuser" m="New Wallet Name" />:
+          <T id="advanced.remote.rpcuser" m="Name" />:
         </div>
         <div className="advanced-daemon-input">
           <TextInput

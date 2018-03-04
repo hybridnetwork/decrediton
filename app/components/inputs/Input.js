@@ -55,14 +55,20 @@ class Input extends React.Component{
       hidden,
       type,
     } = this.props;
+
+    const highlightInputDueToError = showErrors && ((invalid && value) || (required && !value));
+    const containerClassName = highlightInputDueToError?
+        `${this.state.divClassName} input-and-unit--with-error`:
+        this.state.divClassName;
+
     return (
       hidden ? null :
         <Aux>
-          <div className={this.state.divClassName} ref={div => { this.state.inputUnitDiv = div; }}>
+          <div className={containerClassName} ref={div => { this.state.inputUnitDiv = div; }}>
             <input
               ref={input => { this.input = input; }}
               type={type||"text"}
-              className="input"
+              className={showErrors? "input input--with-error" :"input"}
               disabled={disabled ? disabled : null}
               readOnly={readOnly ? readOnly : null}
               placeholder={placeholder}
