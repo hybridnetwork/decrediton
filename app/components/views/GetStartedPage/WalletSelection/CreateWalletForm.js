@@ -20,11 +20,16 @@ const CreateWalletForm = ({
 }) => {
   return (
     <Aux>
-      <div className="advanced-daemon-row">
-        <div className="advanced-daemon-label">
+      <div className="advanced-daemon-row advanced-daemon-row--with-flex">
+        <div className=" dvanced-daemon-column advanced-daemon-column--30p"
+            style={{
+                paddingBottom: '28px', // to push label up to match input box.
+                fontSize: '16px', // match the mainnet/testnet text
+            }}
+        >
           <T id="advanced.remote.rpcuser" m="Name" />:
         </div>
-        <div className="advanced-daemon-input">
+        <div className="advanced-daemon-column advanced-daemon-column--70p">
           <TextInput
             type="text"
             required
@@ -35,11 +40,11 @@ const CreateWalletForm = ({
           />
         </div>
       </div>
-      <div className="advanced-daemon-row">
-        <div className="advanced-daemon-label">
+      <div className="advanced-daemon-row advanced-daemon-row--with-flex">
+        <div className="dvanced-daemon-column advanced-daemon-column--30p">
           <span className="advanced-daemon-network">{newWalletNetwork}</span>
         </div>
-        <div className="advanced-daemon-input">
+        <div className="advanced-daemon-column advanced-daemon-column--70p">
           <NetworkSwitch
               enabled={newWalletNetwork !== "mainnet"}
               // onClick={onChangeCreateWalletNetwork}
