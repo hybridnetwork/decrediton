@@ -595,7 +595,7 @@ const launchDCRWallet = (walletPath, testnet) => {
   // provide a pipe back to decrediton, which reads the grpc port in a secure and
   // reliable way.
   const waitForGrpcPortListener = (data) => {
-    const matches = /DCRW: gRPC server listening on [^ ]+:(\d+)/.exec(data);
+    const matches = /HXW: gRPC server listening on [^ ]+:(\d+)/.exec(data);
     if (matches) {
       notifyGrpcPort(matches[1]);
       // swap the listener since we don't need to keep looking for the port
