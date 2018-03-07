@@ -48,13 +48,14 @@
   min-height: 140px;
   margin-bottom: 20px;
   padding: 14px 20px;
-  border: 1px solid @blue;
+  border: 2px solid @purple;
   border-radius: 5px;
-  background-color: @grey;
+  background-color: #282c34;
   font-family: Inconsolata, monospace;
   color: @white;
   font-size: 16px;
   line-height: 29px;
+  position: relative;
 }
 
 .seed > p {
@@ -62,8 +63,22 @@
 }
 
 .seed > .copy-to-clipboard-icon {
-  float: right;
-  margin-top: -1em;
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  background-position: 7px 8px;
+  background-size: 23px auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-color: #181a1f;
+  border-radius: 5px;
+  padding: 5px 20px 5px 40px;
+
+  &:hover {
+    color: @blue;
+  }
 }
 
 .wallet-key-blue-button {

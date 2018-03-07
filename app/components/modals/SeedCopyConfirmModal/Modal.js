@@ -27,11 +27,8 @@ const Modal = ({show, onCancelModal, onSubmit, copyConfirmationPhrase,
 
           Further, storing the seed on a computer file without backing it up on a physical medium (written down piece of paper stored in a secure location) can cause loss of funds if the local wallet file gets corrupted or is otherwise unavailable (due to hardware failure or any other number of issues).
 
-          If you want to learn more about seed security, please check our seed FAQ located at {seedFaqURL}.
-
           If you are sure you understand the risks and still want to copy the seed to the clipboard, please type the phrase {confirmationPhrase} in the box below and the seed will be copied to the clipboard.`}
         values={{
-          seedFaqURL: <ExternalLink href="https://docs.decred.org/faq/wallets-and-seeds/">https://docs.decred.org/faq/wallets-and-seeds/</ExternalLink>,
           confirmationPhrase: <span className="mono confirm-seed-copy-phrase">'{copyConfirmationPhrase}'</span>,
         }}/>
       </p>
