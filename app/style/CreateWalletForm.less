@@ -2,6 +2,8 @@
 
 .new-seed {
   background-color: @darkGrey;
+  padding-top: 24px;
+  padding-right: 40px;
 }
 
 .help-text {
@@ -67,7 +69,7 @@
   height: auto;
   position: absolute;
   bottom: 10px;
-  right: 20px;
+  right: 10px;
   background-position: 7px 8px;
   background-size: 23px auto;
   background-repeat: no-repeat;
@@ -87,7 +89,9 @@
 }
 
 .confirm-seed {
-  height: 242px;
+  .create-wallet-field {
+    height: 215px;
+  }
 }
 
 .confirm-seed-label-text {
@@ -100,21 +104,24 @@
   line-height: normal;
 }
 
-.content-new-seed-priv-pass {
-  padding-top: 10px;
-  height: 80px;
-}
-
 .create-wallet-button-container {
-  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .create-wallet-field {
+    text-align: right;
+    .wallet-key-blue-button {
+      float: none;
+      margin: 0;
+    }
+  }
 }
 
 .create-wallet-label {
-  float: left;
-  color: @grey;
+  color: #9da5b5;
   font-size: 19px;
   letter-spacing: -0.1px;
-  height: 41px;
   line-height: 41px;
 }
 
@@ -133,12 +140,11 @@
 
 .create-wallet-field {
   width: 100%;
-  float: left;
-  clear: right;
+  margin: 10px 0;
+  min-height: 75px;
 }
 
 .input-private-password {
-  width: 100%;
   min-height: 44px;
 }
 
@@ -168,12 +174,26 @@
 .input-form-confirm-seed {
   -moz-appearance: none !important;
   position: relative;
-  width: 100%;
+  min-height: 140px;
+  margin-bottom: 20px;
+  padding: 14px 20px;
+  border: 2px solid #8539dd;
+  border-radius: 5px;
+  background-color: #282c34;
 
   .words-input {
-    height: 200px;
+    height: 155px;
     min-height: 44px;
-    border-bottom: 1px solid @input-color;
+  }
+
+  .input-and-unit {
+    color: #fff;
+    border: none;
+    background: none;
+
+    .input {
+      color: #fff;
+    }
   }
 
   .Select-control {

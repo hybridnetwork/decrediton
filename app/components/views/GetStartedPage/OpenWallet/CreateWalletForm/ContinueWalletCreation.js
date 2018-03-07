@@ -19,7 +19,6 @@ const ContinueWalletCreation = ({
     onChange={setPassPhrase} onSubmit={onCreateWallet} />
 
     <div className="create-wallet-button-container">
-      <div className="create-wallet-label"></div>
       <div className="create-wallet-field">
         <KeyBlueButton
           className="wallet-key-blue-button"

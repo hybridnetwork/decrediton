@@ -16,7 +16,7 @@ const messages = defineMessages({
 });
 
 const PassPhraseInputs = ({
-  passPhraseLabel = <T id="createWallet.passhraseInput.label" m="Create wallet private passphrase" />,
+  passPhraseLabel = <T id="createWallet.passhraseInput.label" m="Enter a Private Passphrase to protect your wallet." />,
   passPhraseVerificationLabel = <T id="createWallet.passphraseInput.verifyLabel" m="Confirm private passphrase" />,
   blankPassPhraseError = <T id="createWallet.passphraseInput.errors.noPassPhrase" m="*Please enter your private passphrase" />,
   passPhraseVerificationError = <T id="createWallet.passphraseInput.errors.noMatch" m="*Passwords do not match" />,
@@ -31,7 +31,7 @@ const PassPhraseInputs = ({
 }) => (
   <Aux>
     <div className="content-new-seed-priv-pass">
-      <div className="create-wallet-label">{passPhraseLabel}:
+      <div className="create-wallet-label">{passPhraseLabel}
       <InfoModalButton
         modalTitle={<h1><T id="confirmSeed.passphraseInformation" m="Private passphrase information" /></h1>}
         modalContent={<PassphraseInfoModalContent />}
@@ -53,7 +53,6 @@ const PassPhraseInputs = ({
       </div>
     </div>
     <div className="content-new-seed-priv-pass">
-      <div className="create-wallet-label">{passPhraseVerificationLabel}:</div>
       <div className="create-wallet-field">
         <div className="input-form">
           <form className="input-form">

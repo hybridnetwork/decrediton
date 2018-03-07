@@ -122,7 +122,6 @@ class ConfirmSeedForm extends React.Component{
                 onPaste={this.handleOnPaste}
                 seedWords={seedWords}/>
             </form>
-            }
           </div>
           <div className="input-form-error">
             {errors.length

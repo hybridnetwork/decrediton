@@ -9,7 +9,6 @@
 
 .text-toggle {
   display: block;
-  height: 40px;
   float: right;
   text-align: left;
   letter-spacing: .5px;
@@ -36,6 +35,13 @@
 
   &:hover {
     background-color: @lightPurple;
+  }
+}
+
+.inverted-colors .text-toggle-button-left .text-toggle-button-active,
+.inverted-colors .text-toggle-button-right .text-toggle-button-active {
+  &:hover {
+    background-color: @purple;
   }
 }
 
@@ -77,7 +83,7 @@
   cursor: default;
 
   &:hover {
-      background-color: @purple;
+    background-color: @purple;
   }
 }
 
