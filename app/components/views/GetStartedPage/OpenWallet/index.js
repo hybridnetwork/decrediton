@@ -52,12 +52,13 @@ class OpenWalletBody extends React.Component {
   }
 
   render() {
-    const { publicPassPhrase, privatePassPhrase, hasAttemptedOpen, onKeyDown } = this.state;
+    const { publicPassPhrase, privatePassPhrase, hasAttemptedOpen } = this.state;
     const { hasExistingWallet } = this.props;
     const {
       onSetPublicPassPhrase,
       onSetPrivatePassPhrase,
       onOpenWallet,
+      onKeyDown,
     } = this;
 
     return hasExistingWallet ? (
