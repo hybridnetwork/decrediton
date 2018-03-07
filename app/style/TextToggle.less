@@ -12,6 +12,8 @@
   height: 40px;
   float: right;
   text-align: left;
+  letter-spacing: .5px;
+  font-size: 15px;
 }
 
 .text-toggle-small {
@@ -31,6 +33,10 @@
 .inverted-colors .text-toggle-button-right {
   background-color: @darkGrey;
   color: @white;
+
+  &:hover {
+    background-color: @lightPurple;
+  }
 }
 
 .inverted-colors .text-toggle-button-active {
@@ -42,7 +48,7 @@
 .text-toggle-button-right {
   min-width: 140px;
   float: left;
-  border: 1px @grey solid;
+  border: 2px @purple solid;
   background-color: @darkGrey;
   box-shadow: none;
   color: @grey;
@@ -57,17 +63,22 @@
 
 .text-toggle-button-left {
   border-radius: 5px 0px 0px 5px;
+  border-right: none;
 }
 
 .text-toggle-button-right {
+  border-left: none;
   border-radius: 0px 5px 5px 0px;
 }
 
 .text-toggle-button-active {
-  background-color: @grey;
+  background-color: @purple;
   color: #091440;
-  border: 1px solid @grey;
   cursor: default;
+
+  &:hover {
+      background-color: @purple;
+  }
 }
 
 .text-toggle-button-description {
