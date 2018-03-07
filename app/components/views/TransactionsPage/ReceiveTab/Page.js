@@ -17,7 +17,7 @@ const ReceivePage = ({
           <T id="receive.accountLabel" m="This address is for" />:
         </div>
         <div className="receive-select-account-input">
-          <ReceiveAccountsSelect showAccountsButton />
+          <ReceiveAccountsSelect />
         </div>
         <div style={{ clear: "both" }}></div>
       </div>
