@@ -84,7 +84,6 @@
   margin-right: 1em;
   display: inline-block;
   vertical-align: middle;
-  padding-bottom: 2em; // this is to match the padding for the inputs
 }
 
 .send-address .accounts-select {
@@ -117,14 +116,13 @@
 
   vertical-align: top;
   font-size: 20px;
-  width: 3em;
-  text-align: right;
+  margin-right: 10px;
+  width: 100px;
+  text-align: left;
 }
 
 .send-address {
-  .inline-block-mixin;
-
-  width: 39%;
+  display: inline;
   padding-top: 2px;
 }
 
@@ -137,8 +135,8 @@
 
   vertical-align: top;
   margin-left: 0.5em;
-  width: 20px;
-  height: 19px;
+  width: 40px;
+  height: 40px;
   background-image: @add-icon;
   background-position: 50% 50%;
   background-size: 19px;
@@ -154,11 +152,11 @@
 .send-all-wallet-icon {
   .inline-block-mixin;
 
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   background-image: @send-all-icon;
   background-position: 50% 50%;
-  background-size: 19px;
+  background-size: 30px;
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -178,11 +176,11 @@
 .send-self-wallet-icon {
   .inline-block-mixin;
 
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   background-image: @send-to-self-icon;
   background-position: 50% 50%;
-  background-size: 19px;
+  background-size: 30px;
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -207,8 +205,6 @@
 }
 
 .send-amount {
-  .inline-block-mixin;
-
   vertical-align: top;
   margin-top: -2px;
 }
@@ -217,8 +213,9 @@
   .inline-block-mixin;
 
   font-size: 20px;
-  min-width: 3.5em;
-  margin-top: -1px;
+  width: 100px;
+  text-align: left;
+  padding-top: 21px;
 }
 
 .send-address-amount-sum-and-currency {
@@ -276,13 +273,19 @@
   cursor: pointer;
 }
 
+.send-actions {
+  flex: 0 0 200px;
+  text-align: right;
+  padding-right: 73px;
+}
+
 .send-button-area {
-  margin-top: 1em;
+  display: flex;
+  margin-top: 30px;
 }
 
 .content-send {
-  .inline-block-mixin;
-
+  width: 80px;
   vertical-align: top;
 }
 
@@ -296,10 +299,9 @@
 }
 
 .estimation-area-send {
-  .inline-block-mixin;
-
-  text-align: right;
-  float: right;
+  padding-left: 123px;
+  flex: 1 1 100%;
+  text-align: left;
 }
 
 .total-amount-send {
@@ -310,13 +312,13 @@
 .total-amount-send-text {
   .inline-block-mixin;
 
-  width: 20vw;
+  width: 200px;
 }
 
 .total-amount-send-amount {
   .inline-block-mixin;
 
-  width: 15vw;
+  width: 100px;
   font-family: Inconsolata, monospace;
 }
 
@@ -341,7 +343,8 @@
 .send-input-form {
   .inline-block-mixin;
 
-  width: 82%;
+  margin-right: 14px;
+  width: 78%;
 }
 
 // .send-address-amount {

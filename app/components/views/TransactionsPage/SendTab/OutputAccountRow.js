@@ -20,8 +20,8 @@ const SendOutputAccountRow = ({
 }) => (
   <div className="send-row">
     <div className="send-output-row">
-      <div className="send-label"><T id="send.to" m="To" />:</div>
       <div className="send-address">
+        <div className="send-label" style={{ paddingTop: '6px' }}><T id="send.to" m="To" />:</div>
         <ReceiveAccountsSelect
           getAddressForSelected={true}
           showAccountsButton={false}

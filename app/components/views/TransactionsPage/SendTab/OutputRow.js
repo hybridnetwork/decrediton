@@ -31,8 +31,8 @@ const SendOutputRow = ({
 }) => (
   <div className="send-row">
     <div className="send-output-row">
-      <div className="send-label">{index === 0 && <span><T id="send.to" m="To" />:</span>}</div>
       <div className="send-address">
+        <div className="send-label" style={{ paddingTop: '8px' }}>{index === 0 && <span><T id="send.to" m="To" />:</span>}</div>
         <div className="send-input-form">
           <AddressInput
             autoFocus={index == 0}
@@ -45,13 +45,13 @@ const SendOutputRow = ({
             onChange={compose(getOnChangeOutputDestination(index), e => e.target.value)}
           />
         </div>
-        {index === 0 && !isSendAll ? (
+        {/* {index === 0 && !isSendAll ? (
           <div className="send-address-wallet-icon" onClick={onAddOutput}></div>
         ) : (index === 0 && isSendAll) ? (
           <div className="send-address-icon-spacer"></div>
         ) : (index === (outputs.length - 1)) && !isSendAll ? (
           <div className="send-address-delete-icon" onClick={getOnRemoveOutput}></div>
-        ) : ( null ) }
+        ) : ( null ) } */}
       </div>
       <div className="send-amount">
         <div className="send-amount-label">

@@ -36,10 +36,10 @@ const SendPage = ({
     <div className="tab-card">
       <div className="send-flex-height">
         <div className="send-select-account-area">
-          <div className="send-label"><T id="send.from" m="From" />:</div>
+          <div className="send-label" style={{ paddingTop: '5px' }}><T id="send.from" m="From" />:</div>
           <AccountsSelect className="send-select-account-input"
-            {...{account}} onChange={onChangeAccount} showAccountsButton={true} />
-          <div className="send-send-all-input">
+            {...{account}} onChange={onChangeAccount} showAccountsButton={false} />
+          {/* <div className="send-send-all-input">
             {!isSendSelf ?
               <Tooltip text={<T id="send.sendSelfTitle" m="Send funds to another account"/>}>
                 <a className="send-self-wallet-icon" onClick={onShowSendSelf}/>
@@ -56,7 +56,7 @@ const SendPage = ({
                 <a className="send-all-cancel-wallet-icon" onClick={onHideSendAll}/>
               </Tooltip>
             }
-          </div>
+          </div> */}
         </div>
         <div className="send-amount-area">
           {
@@ -69,22 +69,6 @@ const SendPage = ({
         </div>
       </div>
       <div className="send-button-area">
-        <PassphraseModalButton
-          modalTitle={<T id="send.sendConfirmations" m="Transaction Confirmation" />}
-          modalDescription={<Aux><T id="send.confirmAmountLabel" m="Please confirm your transaction for" />:  <Balance amount={totalSpent} /></Aux>}
-          disabled={!isValid}
-          className="content-send"
-          onSubmit={onAttemptSignTransaction}
-          loading={isSendingTransaction}
-          buttonLabel={<T id="send.sendBtn" m="Send" />}
-        />
-        {/* <Aux show={hasUnminedTransactions}>
-          <Tooltip md text={<T id="send.rebroadcastTooltip" m="Rebroadcasting transactions may help in situations when a transaction has been sent to a node that had poor connectivity to the general Hx network."/>}>
-            <KeyBlueButton onClick={onRebroadcastUnmined}>
-              <T id="send.rebroadcastUnmined" m="Rebroadcast"/>
-            </KeyBlueButton>
-          </Tooltip>
-        </Aux> */}
         <div className="estimation-area-send">
           <div className="total-amount-send">
             <div className="total-amount-send-text">
@@ -111,6 +95,24 @@ const SendPage = ({
             </div>
             <div className="total-amount-send-amount">{estimatedSignedSize} bytes</div>
           </div>
+        </div>
+        <div className="send-actions">
+            <PassphraseModalButton
+              modalTitle={<T id="send.sendConfirmations" m="Transaction Confirmation" />}
+              modalDescription={<Aux><T id="send.confirmAmountLabel" m="Please confirm your transaction for" />:  <Balance amount={totalSpent} /></Aux>}
+              disabled={!isValid}
+              className="content-send"
+              onSubmit={onAttemptSignTransaction}
+              loading={isSendingTransaction}
+              buttonLabel={<T id="send.sendBtn" m="Send" />}
+            />
+            {/* <Aux show={hasUnminedTransactions}>
+              <Tooltip md text={<T id="send.rebroadcastTooltip" m="Rebroadcasting transactions may help in situations when a transaction has been sent to a node that had poor connectivity to the general Hx network."/>}>
+                <KeyBlueButton onClick={onRebroadcastUnmined}>
+                  <T id="send.rebroadcastUnmined" m="Rebroadcast"/>
+                </KeyBlueButton>
+              </Tooltip>
+            </Aux> */}
         </div>
       </div>
     </div>

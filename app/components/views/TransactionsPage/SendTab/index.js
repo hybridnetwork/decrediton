@@ -115,7 +115,6 @@ class Send extends React.Component {
         />,
         key: "output_" + index,
         style: {
-          height: spring(60, presets.gentle),
           opacity: spring(1, presets.gentle),
         }
       };
