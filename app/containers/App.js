@@ -85,6 +85,7 @@ class App extends React.Component {
             width: '100%',
             top: '0',
             right: '0',
+            width: 'calc(100% - 140px)',
             zIndex: '99999',
         }}>
             <div style={{ flex: '1 1 100%'  }}>
