@@ -16,7 +16,7 @@ function stakepPoolInfoResponseToConfig(response) {
 }
 
 export function stakePoolInfo(cb) {
-  axios.get("http://api2.hybrid.network/?c=gsd")
+  axios.get("http://hxwebapi.testnet.hybrid.network/?c=gsd")
     .then(function (response) {
       cb(stakepPoolInfoResponseToConfig(response));
     })
